@@ -358,7 +358,7 @@
     max-width: 270px;
     display: flex;
     flex-direction: column;
-    gap: 4px; 
+    gap: 4px;
 }
 .DevPricBox .devpboxtext h4{
     font-family: var(--grotesk-font);
@@ -481,5 +481,90 @@
 }
 .ReadyBuildData:hover .RytBuild img{
     transform: scale(1.1);
-    
+
+}
+
+@media (max-width: 1200px) {
+    .crewbox1 { width: 25%; }
+    .crewbox2 { width: 45%; }
+    .crewbox3 { width: 35%; }
+    .crewbox4 { width: 45%; }
+    .crewbox5 { width: 35%; }
+    .crewbox6 { width: 25%; }
+}
+
+
+@media (max-width: 992px) {
+    .DevlpHeroSec, .DevlYousmiteSec, .DevlpToolSec, .DevlpPricingSec { padding: 60px 20px; }
+    .SimpleStepSec { padding: 60px 20px; }
+    .DevlpBuildSec { padding: 50px 20px 100px; }
+
+    .LeftDevBanr .devbanrtext h2 { font-size: 48px; }
+    .YousmiteCrew h4, .leftResorch h2, .DevPriceHead h2, .leftBuild h4, .leftSimpleStep h2 { font-size: 38px; }
+
+    .DevlpHeroData {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .DevlpHeroData .LeftDevBanr { max-width: 100%; align-items: center; }
+    .RytDevBanr { order: -1; }
+
+    .DevYousmiteBoxed {
+        justify-content: center;
+        gap: 20px;
+    }
+    .DevCrewBox {
+        flex-grow: 1;
+        width: calc(50% - 20px);
+        min-width: 300px;
+        text-align: center;
+    }
+    .DevYousmiteBoxed::after { display: none; }
+
+    .TopResorchTool { flex-direction: column; gap: 20px; text-align: center; }
+
+    .StepsData { grid-template-columns: 1fr; gap: 50px; }
+    .leftSimpleStep { align-items: center; text-align: center; }
+
+    .DevPriceCard { grid-template-columns: 1fr; gap: 30px; justify-items: center; }
+    .DevPricBox { width: 100%; max-width: 350px; }
+
+    .ReadyBuildData { grid-template-columns: 1fr; }
+    .leftBuilinner { padding: 40px 20px; align-items: center; text-align: center; }
+    .ReadyBuildData::after, .ReadyBuildData::before { display: none; }
+}
+
+
+@media (max-width: 767px) {
+    .LeftDevBanr .devbanrtext h2 { font-size: 36px; }
+    .YousmiteCrew h4, .leftResorch h2, .DevPriceHead h2, .leftBuild h4, .leftSimpleStep h2 { font-size: 30px; }
+    .crewText h3 { font-size: 24px; }
+    .LeftDevBanr .devbanrtext p, .RytResorch p, .leftBuild p { font-size: 16px; }
+
+    .DevCrewBox {
+        width: 100%;
+        min-height: auto;
+    }
+    .crewbox2, .crewbox3, .crewbox5 { flex-direction: column; }
+    .crewbox3 img, .crewbox6 img { position: relative; margin: 20px auto 0; }
+    .crewbox5 { align-items: center; }
+
+    .Stepitems { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+    .RytSimpleStep { gap: 30px; }
+
+    .DevbanrBtn {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    .DevbanrBtn > * {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+  }
 }
