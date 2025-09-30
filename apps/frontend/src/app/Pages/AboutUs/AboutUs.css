@@ -1,5 +1,3 @@
-/* AboutHeroSec started  */
-
 .AboutHeroSec{
     padding: 80px 0px;
     background: url("https://d2il6osz49gpup.cloudfront.net/Images/aboutbg.png")no-repeat;
@@ -115,18 +113,6 @@
     color: var(--notibg);
     margin: 0;
 }
-
-
-
-
-
-
-/* AboutHeroSec started  */
-
-
-
-
-/* OurStorySec started  */
 .OurStorySec{
     padding: 80px 0px;
     position: relative;
@@ -234,39 +220,28 @@
     color: var(--pureblack);
     margin: 0;
 }
-
-/* =================================== */
-/* ========== Responsive Styles ========== */
-/* =================================== */
-
-/* For Tablets and smaller devices */
 @media (max-width: 992px) {
-    /* --- Hero Section --- */
     .AboutHeroSec {
-        background-size: cover; /* Prevents background image from stretching */
+        background-size: cover; 
         background-position: center;
     }
 
     .AboutHeroSec .AbtHeroData {
-        gap: 120px; /* Reduce the huge gap between the top and bottom content */
+        gap: 120px;
     }
 
     .AbutheroBtm .abtherocard {
-        flex-direction: column; /* Stack the three cards vertically */
-        align-items: center; /* Center the cards when stacked */
+        flex-direction: column;
+        align-items: center;
     }
-
-    /* --- Our Story Section --- */
     .OurStorySec .StoryData {
-        grid-template-columns: 1fr; /* Change the two-column grid to a single column */
+        grid-template-columns: 1fr;
         text-align: center;
     }
     .OurStorySec .StoryData .storyTexted, .OurStorySec .StoryData .storyTexted .ourstorypara{
-        padding-right: 0; /* Remove the extra padding on the side */
+        padding-right: 0; 
         align-items: center;
     }
-
-    /* A fix to make the Next.js Image component responsive within the new grid layout */
     .OurStorySec .StoryData img {
         width: 100%;
         max-width: 500px;
@@ -275,24 +250,21 @@
     }
 }
 
-/* For smaller tablets and mobile phones */
 @media (max-width: 768px) {
-    /* --- General Section Padding --- */
     .AboutHeroSec, .OurStorySec, .AbtTeamSec {
-        padding: 60px 15px; /* Reduce top/bottom padding and add side padding */
+        padding: 60px 15px;
     }
 
-    /* --- Font Sizes --- */
     .AboutHeroSec .AbtHeroData .abttopHero h2,
     .AbutheroBtm h2,
     .OurStorySec .StoryData .storyTexted h2,
     .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
-        font-size: 36px; /* Reduce all main heading font sizes */
+        font-size: 36px; 
     }
 
     .AboutHeroSec .AbtHeroData .abttopHero h4,
     .AbtTeamSec .AbtTeamdata .AbtTeamHead h4 {
-        font-size: 22px; /* Reduce subheading font sizes */
+        font-size: 22px; 
     }
 
     .OurStorySec .StoryData .storyTexted .ourstorypara h6,
@@ -300,19 +272,15 @@
         font-size: 16px;
     }
 
-    /* --- Hero Section --- */
     .AboutHeroSec .AbtHeroData .abttopHero {
         padding: 24px;
-        min-height: auto; /* Allow the white box's height to be flexible */
+        min-height: auto;
     }
 
-    /* --- Our Story Section --- */
     .OurStorySec::after {
-        display: none; /* Hide the decorative background element on small screens */
+        display: none;
     }
 }
-
-/* For small mobile phones */
 @media (max-width: 480px) {
     .AboutHeroSec, .OurStorySec, .AbtTeamSec {
         padding: 40px 15px;
@@ -324,11 +292,10 @@
     .AbutheroBtm h2,
     .OurStorySec .StoryData .storyTexted h2,
     .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
-        font-size: 28px; /* Further reduce font sizes for the smallest screens */
+        font-size: 28px; 
     }
 
     .AboutHeroSec .AbtHeroData .abttopHero h4 {
         font-size: 18px;
     }
 }
-/* AbtTeamSec Ended  */
