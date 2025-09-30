@@ -484,3 +484,97 @@ a.UnFillbtn {
 .lftbetter img {
   width: 100%;
 }
+@media (max-width: 992px) {
+    .HomeHeroSection, .PracticedSection, .TrustExpertSec, .WhoCareSection, .BetterCareSec {
+        padding: 60px 20px;
+    }
+    .FocusSection {
+        padding: 0 20px 60px 20px;
+    }
+    .LeftHeroDiv .herotext h1 { font-size: 42px; }
+    .PractHeading h2, .FocusTexted h2, .ExprtTexted h4, .whocareData .lftcare h2, .betInner h2 { font-size: 34px; }
+    .HomeHeroSection .HeroData {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .LeftHeroDiv {
+        order: 2;
+        align-items: center;
+    }
+    .LeftHeroDiv .HeroBtn {
+        justify-content: center;
+    }
+    .RytHeroDiv img {
+        max-width: 100%;
+        height: auto;
+    }
+    .Practice_Box_Data {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Focus_data {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+    .FocusItem {
+        max-width: 100%;
+    }
+    .TrustExpertData {
+        flex-direction: column;
+        align-items: center;
+    }
+    .whocareData {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .whocareData .lftcare {
+        align-items: center;
+    }
+    .whocareData .rytcare .carelog {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .BettercareBox {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 767px) {
+    .HomeHeroSection, .PracticedSection, .TrustExpertSec, .WhoCareSection, .BetterCareSec {
+        padding: 40px 15px;
+    }
+    .FocusSection {
+        padding: 0 15px 40px 15px;
+    }
+    .LeftHeroDiv .herotext h1 { font-size: 32px; }
+    .PractHeading h2, .FocusTexted h2, .ExprtTexted h4, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
+    .LeftHeroDiv .herotext h1 {
+        white-space: normal;
+        animation: none;
+        width: 100%;
+    }
+    .LeftHeroDiv .HeroBtn {
+        flex-direction: column;
+        width: 100%;
+    }
+    .LeftHeroDiv .HeroBtn > a {
+        width: 100%;
+        max-width: 320px;
+    }
+    .Practice_Box_Data {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .Focus_data {
+        grid-template-columns: 1fr;
+    }
+    .FocusTexted {
+        min-width: auto;
+    }
+    .TrustExpertData::after {
+        display: none;
+    }
+    .whocareData .rytcare .carelog {
+        gap: 40px;
+    }
+}
