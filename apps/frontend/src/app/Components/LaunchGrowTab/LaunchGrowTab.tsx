@@ -9,9 +9,9 @@ function LaunchGrowTab() {
 
       const [activeTab, setActiveTab] = useState(1); // Default active tab
       // const [hoveredTab, setHoveredTab] = useState(1);
-    
-    
-    
+
+
+
       const Launchtabs = [
         {
           id: 1,
@@ -25,7 +25,7 @@ function LaunchGrowTab() {
             "Ensure secure, reliable API calls for consistent data sharing.",
             "Scale effortlessly as your app grows with robust backend support.",
           ],
-          
+
         },
         {
           id: 2,
@@ -39,7 +39,7 @@ function LaunchGrowTab() {
             "Allows developers to create and publish custom plugins and microfrontends.",
             "Offers access to practice performance dashboards, and compliance reporting.",
           ],
-          
+
         },
         {
           id: 3,
@@ -53,7 +53,7 @@ function LaunchGrowTab() {
             "Auto-fill forms for medications, dosage instructions, and treatment plans.",
             "Digital forms for surgery approvals, client consent, and pet onboarding.",
           ],
-          
+
         },
         {
           id: 4,
@@ -68,11 +68,11 @@ function LaunchGrowTab() {
             "ISO27001, SOC2 Type 1, HL7 FHIR compatible and GDPR guidelines, encryption standards, access controls, and audit logs.",
             "Installation steps, server requirements, version updates, and troubleshooting tips.",
           ],
-          
+
         }
       ];
-    
-    
+
+
 
 
     return (
@@ -121,6 +121,22 @@ function LaunchGrowTab() {
                         )}
                     </div>
                 ))}
+
+                {/* Mobile Tab Navigation */}
+                <div className="mobile-tab-nav">
+                    {Launchtabs.map((tab) => (
+                        <button
+                            key={tab.id}
+                            className={`mobile-tab-button ${activeTab === tab.id ? "active" : ""}`}
+                            onClick={() => setActiveTab(tab.id)}
+                        >
+                            {activeTab === tab.id
+                                ? `${tab.id.toString().padStart(2, "0")} ${tab.title}`
+                                : tab.id.toString().padStart(2, "0")
+                            }
+                        </button>
+                    ))}
+                </div>
             </div>
         </>
     )
