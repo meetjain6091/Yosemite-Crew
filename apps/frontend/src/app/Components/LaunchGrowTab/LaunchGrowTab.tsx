@@ -78,6 +78,7 @@ function LaunchGrowTab() {
     return (
         <>
             <div className="BuildLaunchTabSec">
+                {/* --- DESKTOP VIEW --- */}
                 {Launchtabs.map((growtab) => (
                     <div
                         key={growtab.id}
@@ -97,32 +98,54 @@ function LaunchGrowTab() {
                                 </div>
                                 <div className="GrowTabInner">
                                     <div className="IconPic">
-                                        <Image src={growtab.icon} alt={`${growtab.title} icon`}  width={80}  height={80} />
+                                        <Image src={growtab.icon} alt={`${growtab.title} icon`} width={80} height={80} />
                                     </div>
                                     <div className="BottomText">
                                         <div className="Texted">
                                             <h2>{growtab.heading}</h2>
                                             <ul>
-                                                {growtab.details &&
-                                                    growtab.details.map((detail, index) => (
-                                                        <li key={index}>
-                                                            <Icon icon="solar:verified-check-bold" width="24" height="24" style={{ color: "#247AED" }} />
-                                                            {detail}
-                                                        </li>
-                                                    ))}
+                                                {growtab.details?.map((detail, index) => (
+                                                    <li key={index}>
+                                                        <Icon icon="solar:verified-check-bold" width="24" height="24" style={{ color: "#247AED", flexShrink: 0 }} />
+                                                        {detail}
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </div>
-
-                                        {/* <FillBtn FilName="View Documentation" FilIcon="ri-draft-line" Filhref="#" /> */}
                                     </div>
-
                                 </div>
                             </div>
                         )}
                     </div>
                 ))}
 
-                {/* Mobile Tab Navigation */}
+                {/* --- MOBILE VIEW --- */}
+                <div className="mobile-content">
+                    {Launchtabs.map((growtab) => (
+                         activeTab === growtab.id && (
+                            <div key={`mobile-${growtab.id}`} className="GrowTabInner">
+                                <div className="IconPic">
+                                    <Image src={growtab.icon} alt={`${growtab.title} icon`} width={60} height={60} />
+                                </div>
+                                <div className="BottomText">
+                                    <div className="Texted">
+                                        <h2>{growtab.heading}</h2>
+                                        <ul>
+                                            {growtab.details?.map((detail, index) => (
+                                                <li key={index}>
+                                                    <Icon icon="solar:verified-check-bold" width="20" height="20" style={{ color: "#247AED", flexShrink: 0, marginTop: '2px' }} />
+                                                    {detail}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                         )
+                    ))}
+                </div>
+
+                {/* --- FLOATING MOBILE NAVIGATION --- */}
                 <div className="mobile-tab-nav">
                     {Launchtabs.map((tab) => (
                         <button
@@ -130,10 +153,7 @@ function LaunchGrowTab() {
                             className={`mobile-tab-button ${activeTab === tab.id ? "active" : ""}`}
                             onClick={() => setActiveTab(tab.id)}
                         >
-                            {activeTab === tab.id
-                                ? `${tab.id.toString().padStart(2, "0")} ${tab.title}`
-                                : tab.id.toString().padStart(2, "0")
-                            }
+                            {tab.title}
                         </button>
                     ))}
                 </div>
