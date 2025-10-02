@@ -7,7 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoIosFlash } from "react-icons/io";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
-import Header from "@/app/Components/Header/Header";
 
 function HomePage() {
   const [isLoggedIn] = useState(false);
@@ -33,7 +32,6 @@ function HomePage() {
                       alt="petfoot"
                       width={20}
                       height={20}
-                      color=""
                     />{" "}
                     Open source, cloud-based system
                   </p>
@@ -174,7 +172,6 @@ function HomePage() {
                 management and elevates animal care.
               </p>
             </div>
-
             <div className="Focus_data">
               <FocusCard
                 Focimg="https://d2il6osz49gpup.cloudfront.net/Images/focus1.png"
@@ -206,91 +203,6 @@ function HomePage() {
         </Container>
       </section>
 
-      {/* <section className="TrustExpertSec">
-        <Container>
-          <div className="ExptMaindata">
-            <div className="ExprtTexted">
-              <h4>Trusted by Veterinary Experts</h4>
-            </div>
-            <div className="TrustExpertData">
-              <div className="Expertitems">
-                <div className="expertPara">
-                  <p>
-                    Yosemite Crew has transformed the way we manage our clinic.
-                    The open-source platform allows us to customize it to our
-                    needs, and the automated workflows save us hours every week!
-                  </p>
-                </div>
-                <div className="expertBio">
-                  <Image
-                    aria-hidden
-                    src={`https://d2il6osz49gpup.cloudfront.net/Homepage/exprt1.png`}
-                    alt="Hero"
-                    width={50}
-                    height={50}
-                  />
-                  <div className="exprtName">
-                    <h6>Dr. Sarah Mitchell</h6>
-                    <p>
-                      Senior Veterinarian <br /> Paws & Claws Animal Hospital
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="Expertitems purpleitem">
-                <div className="expertPara">
-                  <p>
-                    Our team is more efficient, and our clients love the mobile
-                    app. It’s made communication so much easier, and patient
-                    care is more organized than ever.t
-                  </p>
-                </div>
-                <div className="expertBio purplebio">
-                  <Image
-                    aria-hidden
-                    src={`https://d2il6osz49gpup.cloudfront.net/Homepage/exprt2.png`}
-                    alt="Hero"
-                    width={50}
-                    height={50}
-                  />
-                  <div className="exprtName">
-                    <h6>Dr. Michael Lawson</h6>
-                    <p>
-                      Director <br /> Healthy Paws Veterinary Center
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="Expertitems greenitem">
-                <div className="expertPara">
-                  <p>
-                    Switching to Yosemite Crew was the best decision for our
-                    practice. The integration with third-party tools and
-                    real-time analytics have given us incredible insights into
-                    how to improve our operations.
-                  </p>
-                </div>
-                <div className="expertBio greenbio">
-                  <Image
-                    aria-hidden
-                    src={`https://d2il6osz49gpup.cloudfront.net/Homepage/exprt3.png`}
-                    alt="Hero"
-                    width={50}
-                    height={50}
-                  />
-                  <div className="exprtName">
-                    <h6>Dr. Emily Carter</h6>
-                    <p>
-                      Clinic Manager <br /> Furry Friends Veterinary Clinic
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section> */}
-
       <section className="WhoCareSection">
         <Container>
           <div className="whocareData">
@@ -321,7 +233,6 @@ function HomePage() {
                   width={115}
                   height={114}
                 />
-
                 <Image
                   aria-hidden
                   src="https://d2il6osz49gpup.cloudfront.net/Images/cllog3.png"
@@ -343,43 +254,44 @@ function HomePage() {
       </section>
 
       <section className="BetterCareSec">
-        <Container>
-          <div className="BettercareBox">
-            <div className="lftbetter">
-              <div className="betInner">
-                <div className="careText">
-                  <h2>
-                    Better Care is just a <br /> click away
-                  </h2>
-                  <p>
-                    Join hundreds of veterinary clinics already enhancing
-                    patient care and streamlining their workflow.
-                  </p>
-                </div>
-                <FillBtn icon={<IoIosFlash />} text=" Get Started" href="#" />
-              </div>
-            </div>
-            <div className="lftbetter">
-              <Image
-                aria-hidden
-                src={`https://d2il6osz49gpup.cloudfront.net/Homepage/betterimg.png`}
-                alt="betterimg"
-                width={507}
-                height={433}
-              />
-            </div>
+  <Container>
+    <div className="BettercareBox">
+      <div className="lftbetter">
+        <div className="betInner">
+          <div className="careText">
+            <h2>
+              Better Care is just a <br /> click away
+            </h2>
+            <p>
+              Join hundreds of veterinary clinics already enhancing
+              patient care and streamlining their workflow.
+            </p>
           </div>
-        </Container>
-      </section>
+          {/* CORRECTED: Swapped to the correct button style */}
+          <FillBtn
+            icon={<MdOutlineAccessTimeFilled />}
+            text="Book a Demo"
+            href="/bookDemo"
+          />
+        </div>
+      </div>
+      <div className="rytbetter">
+        <Image
+          aria-hidden
+          src={`https://d2il6osz49gpup.cloudfront.net/Homepage/betterimg.png`}
+          alt="betterimg"
+          width={507}
+          height={433}
+        />
+      </div>
+    </div>
+  </Container>
+</section>
 
       <Footer />
     </>
   );
 }
-
-export default HomePage;
-
-// ButtonProps
 
 type ButtonProps = {
   icon: ReactNode;
@@ -396,8 +308,8 @@ export function FillBtn({ icon, text, onClick, href, style }: ButtonProps) {
       className="Fillbtn"
       onClick={(e) => {
         if (onClick) {
-          e.preventDefault(); // ✅ stops immediate navigation
-          onClick(e); // ✅ trigger your handler
+          e.preventDefault();
+          onClick(e);
         }
       }}
       style={style}
@@ -406,6 +318,7 @@ export function FillBtn({ icon, text, onClick, href, style }: ButtonProps) {
     </Link>
   );
 }
+
 export function UnFillBtn({ icon, text, href, onClick, style }: ButtonProps) {
   return (
     <Link className="UnFillbtn" href={href} onClick={onClick} style={style}>
@@ -413,8 +326,6 @@ export function UnFillBtn({ icon, text, href, onClick, style }: ButtonProps) {
     </Link>
   );
 }
-
-// BoxPractProps
 
 interface BoxPractProps {
   Bpimg: string;
@@ -453,3 +364,5 @@ const FocusCard: React.FC<FocusCardProps> = ({ Focimg, focname, focpara }) => {
     </div>
   );
 };
+
+export default HomePage;

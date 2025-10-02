@@ -1,4 +1,13 @@
-/* HomeHeroSection started  */
+/* ======================================================== */
+/*             BASE & DESKTOP STYLES                */
+/* ======================================================== */
+
+/* General Overflow Prevention */
+body, html {
+  overflow-x: hidden;
+}
+
+/* HomeHeroSection started  */
 .HomeHeroSection {
   padding: 80px 0px;
   display: flex;
@@ -8,6 +17,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: 30px;
 }
 .HomeHeroSection .HeroData .LeftHeroDiv {
   display: flex;
@@ -20,6 +30,13 @@
   line-height: 120%;
   color: var(--black-text);
   font-family: var(--grotesk-font);
+  margin: 0;
+}
+.RytHeroDiv img {
+  width: 100%;
+  height: auto;
+}
+.LeftHeroDiv .herotext h1.type {
   overflow: hidden;
   white-space: nowrap;
   padding: 5px 0px;
@@ -27,7 +44,6 @@
     type 1.5s steps(90) 1.5s 1 normal both,
     cursor 1s step-end infinite;
   position: relative;
-  margin: 0;
 }
 .LeftHeroDiv .herotext .first {
   animation:
@@ -37,18 +53,16 @@
 .LeftHeroDiv .herotext .second {
   animation:
     type 1.5s steps(90) 1.5s 1 normal both,
-    cursor 1s step-end infinite; /* Delay for the second h1 */
+    cursor 1s step-end infinite;
 }
 @keyframes type {
   from {
     width: 0;
   }
-
   to {
     width: 100%;
   }
 }
-
 .LeftHeroDiv .heroPara {
   display: flex;
   flex-direction: column;
@@ -87,12 +101,12 @@ a.Fillbtn {
   line-height: 120%;
   font-family: var(--grotesk-font);
   min-height: 60px;
-  &:hover {
-    background: var(--black-hover);
-  }
+}
+a.Fillbtn:hover {
+  background: var(--black-hover);
 }
 a.UnFillbtn {
-  background: var(---whitebg);
+  background: var(--whitebg);
   color: var(--black-text);
   border: 1px solid var(--black-bg);
   border-radius: 28px;
@@ -106,24 +120,13 @@ a.UnFillbtn {
   font-weight: 500;
   line-height: 120%;
   font-family: var(--grotesk-font);
-  &:hover {
-    box-shadow: 0px 2px 70px 6px #00000029;
-  }
 }
-
-@media screen and (max-width: 640px) {
-  a.Fillbtn {
-    padding: 14px 24px;
-  }
-  a.UnFillbtn {
-    padding: 16px 28px;
-  }
+a.UnFillbtn:hover {
+  box-shadow: 0px 2px 70px 6px #00000029;
 }
+/* HomeHeroSection Ended  */
 
-/* HomeHeroSection Ended  */
-
-/* PracticedSection Started  */
-
+/* PracticedSection Started  */
 .PracticedSection {
   padding: 80px 0px;
 }
@@ -177,10 +180,12 @@ a.UnFillbtn {
   margin: 0;
   opacity: 80%;
 }
-/* PracticedSection Ended  */
+/* PracticedSection Ended  */
 
 /* FocusSection Started */
-
+.FocusSection {
+  padding: 80px 0px;
+}
 .FocusData {
   display: flex;
   flex-direction: column;
@@ -192,7 +197,7 @@ a.UnFillbtn {
   justify-content: center;
   flex-direction: column;
   gap: 8px;
-  min-width: 443px;
+  max-width: 443px;
   margin: 0 auto;
   text-align: center;
 }
@@ -224,7 +229,6 @@ a.UnFillbtn {
   border: 1px solid var(--lightgrey);
   box-shadow: 0px 0px 8px 0px #247aed14;
   width: 100%;
-  max-width: 415px;
   border-radius: 28px;
   min-height: 309px;
   display: flex;
@@ -233,6 +237,7 @@ a.UnFillbtn {
   align-items: center;
   text-align: center;
   gap: 32px;
+  padding: 20px;
 }
 .focusText {
   max-width: 377px;
@@ -258,128 +263,9 @@ a.UnFillbtn {
   opacity: 80%;
   font-family: var(--satoshi-font);
 }
-/* FocusSection ended  */
+/* FocusSection ended  */
 
-/* TrustExpertSec Started */
-
-.TrustExpertSec {
-  padding: 100px 0px 80px 0px;
-}
-.ExptMaindata {
-  display: flex;
-  flex-direction: column;
-}
-.ExprtTexted {
-  text-align: center;
-}
-.ExprtTexted h4 {
-  font-weight: 500;
-  font-size: 40px;
-  font-family: var(--grotesk-font);
-  line-height: 120%;
-  margin: 0;
-  color: var(--black-text);
-}
-.TrustExpertData {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  padding: 50px 0px;
-  position: relative;
-}
-.TrustExpertData::after {
-  position: absolute;
-  content: " ";
-  background: url("https://d2il6osz49gpup.cloudfront.net/Images/TrustAfter.png");
-  background-size: 100% 100%;
-  height: 300px;
-  width: 300px;
-  right: -25px;
-  top: -220px;
-  animation: heartbeat 1.5s infinite ease-in-out;
-  z-index: -1;
-}
-@keyframes heartbeat {
-  0%,
-  100% {
-    transform: scale(1); /* Normal size */
-  }
-  50% {
-    transform: scale(1.1); /* Slightly larger size */
-  }
-}
-.Expertitems {
-  background: var(--whitebg);
-  box-shadow: 0px 28.93px 63.5px 0px #450e1529;
-  border-radius: 20px 20px 0px 0px;
-  position: relative;
-  width: 100%;
-  max-width: 302px;
-  padding: 16px;
-  height: 100%;
-  min-height: 360px;
-}
-.Expertitems::after {
-  position: absolute;
-  content: " ";
-  background: var(--blue-text);
-  width: 55px;
-  height: 4px;
-  top: 0;
-}
-.expertBio {
-  position: absolute;
-  display: flex;
-  gap: 8px;
-  padding: 20px 16px;
-  border-radius: 16px 16px 0px 0px;
-  background: var(--blue-text);
-  width: 100%;
-  left: 0;
-  bottom: 0;
-}
-.expertBio img {
-  border-radius: 50%;
-}
-.expertPara {
-  min-height: 244px;
-  display: flex;
-  align-items: center;
-}
-.expertPara p {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 120%;
-  color: var(--black-text);
-  font-family: var(--satoshi-font);
-  margin: 0;
-}
-.exprtName {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.exprtName h6 {
-  font-family: var(--satoshi-font);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 120%;
-  color: var(--white-text);
-  margin: 0;
-}
-.exprtName p {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 120%;
-  color: var(--white-text);
-  margin: 0;
-  opacity: 70%;
-}
-
-/* TrustExpertSec Ended */
-
-/* WhoCareSection Started  */
-
+/* WhoCareSection Started  */
 .WhoCareSection {
   padding: 50px 0px;
 }
@@ -412,8 +298,8 @@ a.UnFillbtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   flex-direction: column;
+  gap: 20px;
 }
 .whocareData .rytcare p {
   margin: 0;
@@ -430,9 +316,9 @@ a.UnFillbtn {
   justify-content: space-evenly;
   width: 100%;
 }
+/* WhoCareSection Ended   */
 
-/* WhoCareSection Ended   */
-
+/* BetterCareSec Started */
 .BetterCareSec {
   padding: 100px 0px 200px 0px;
 }
@@ -452,6 +338,15 @@ a.UnFillbtn {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px;
+}
+.rytbetter {
+  overflow: hidden;
+}
+.rytbetter img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .betInner {
   max-width: 422px;
@@ -468,7 +363,6 @@ a.UnFillbtn {
 .betInner h2 {
   font-size: 40px;
   font-weight: 500;
-  line-height: 48px;
   margin: 0;
   font-family: var(--grotesk-font);
   color: var(--black-text);
@@ -481,100 +375,206 @@ a.UnFillbtn {
   font-family: var(--satoshi-font);
   margin: 0;
 }
-.lftbetter img {
-  width: 100%;
+/* BetterCareSec Ended */
+
+
+/* ======================================================== */
+/* ===== FINAL RESPONSIVE STYLES (FIGMA ALIGNED) ====== */
+/* ======================================================== */
+
+/* == 1. TABLET STYLES (max-width: 1024px) == */
+@media (max-width: 1024px) {
+  /* --- General Section Padding --- */
+  .HomeHeroSection, .PracticedSection, .FocusSection, .WhoCareSection, .BetterCareSec {
+    padding: 60px 25px;
+  }
+  .BetterCareSec {
+    padding-bottom: 120px;
+  }
+
+  /* --- Typography --- */
+  .LeftHeroDiv .herotext h1 { font-size: 40px; }
+  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 34px; }
+
+  /* --- Hero Section --- */
+  .HomeHeroSection .HeroData {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    justify-items: center;
+  }
+  .RytHeroDiv {
+    order: -1;
+  }
+  .LeftHeroDiv {
+    align-items: center;
+  }
+  .LeftHeroDiv .HeroBtn {
+    justify-content: center;
+  }
+  .LeftHeroDiv .herotext h1.type,
+  .LeftHeroDiv .herotext .first,
+  .LeftHeroDiv .herotext .second {
+      animation: none;
+      white-space: normal;
+      width: auto;
+  }
+
+  /* --- Practice Section --- */
+  .PractHeading h2 {
+    text-align: center;
+  }
+  .Practice_Box_Data {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .PracBox {
+    max-width: none;
+  }
+
+  /* --- Focus Section --- */
+  .Focus_data {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .FocusTexted {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .Focus_data > .FocusItem:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 50%;
+  }
+
+  /* --- Who Care Section --- */
+  .whocareData {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+    justify-items: center;
+  }
+  .whocareData .lftcare {
+    align-items: center;
+  }
+  .whocareData .rytcare .carelog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 30px;
+    max-width: 400px;
+  }
+
+  /* --- Better Care Section --- */
+  .BettercareBox {
+    grid-template-columns: 1fr;
+  }
+  .rytbetter {
+    order: 1;
+    padding: 0;
+  }
+  .lftbetter {
+    order: 2;
+    text-align: center;
+  }
+  .rytbetter img {
+    border-radius: 28px 28px 0 0;
+  }
+  .betInner {
+    align-items: center;
+  }
 }
-@media (max-width: 992px) {
-    .HomeHeroSection, .PracticedSection, .TrustExpertSec, .WhoCareSection, .BetterCareSec {
-        padding: 60px 20px;
-    }
-    .FocusSection {
-        padding: 0 20px 60px 20px;
-    }
-    .LeftHeroDiv .herotext h1 { font-size: 42px; }
-    .PractHeading h2, .FocusTexted h2, .ExprtTexted h4, .whocareData .lftcare h2, .betInner h2 { font-size: 34px; }
-    .HomeHeroSection .HeroData {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-    .LeftHeroDiv {
-        order: 2;
-        align-items: center;
-    }
-    .LeftHeroDiv .HeroBtn {
-        justify-content: center;
-    }
-    .RytHeroDiv img {
-        max-width: 100%;
-        height: auto;
-    }
-    .Practice_Box_Data {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .Focus_data {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
-    }
-    .FocusItem {
-        max-width: 100%;
-    }
-    .TrustExpertData {
-        flex-direction: column;
-        align-items: center;
-    }
-    .whocareData {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-    .whocareData .lftcare {
-        align-items: center;
-    }
-    .whocareData .rytcare .carelog {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .BettercareBox {
-        grid-template-columns: 1fr;
-    }
-}
+
+/* == 2. MOBILE STYLES (max-width: 767px) == */
 @media (max-width: 767px) {
-    .HomeHeroSection, .PracticedSection, .TrustExpertSec, .WhoCareSection, .BetterCareSec {
-        padding: 40px 15px;
-    }
-    .FocusSection {
-        padding: 0 15px 40px 15px;
-    }
-    .LeftHeroDiv .herotext h1 { font-size: 32px; }
-    .PractHeading h2, .FocusTexted h2, .ExprtTexted h4, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
-    .LeftHeroDiv .herotext h1 {
-        white-space: normal;
-        animation: none;
-        width: 100%;
-    }
-    .LeftHeroDiv .HeroBtn {
-        flex-direction: column;
-        width: 100%;
-    }
-    .LeftHeroDiv .HeroBtn > a {
-        width: 100%;
-        max-width: 320px;
-    }
-    .Practice_Box_Data {
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-    .Focus_data {
-        grid-template-columns: 1fr;
-    }
-    .FocusTexted {
-        min-width: auto;
-    }
-    .TrustExpertData::after {
-        display: none;
-    }
-    .whocareData .rytcare .carelog {
-        gap: 40px;
-    }
+  /* --- General Section Padding & Typography --- */
+  .HomeHeroSection, .PracticedSection, .FocusSection, .WhoCareSection, .BetterCareSec {
+    padding: 40px 15px;
+  }
+  .BetterCareSec {
+    padding-bottom: 80px;
+  }
+  .LeftHeroDiv .herotext h1 { font-size: 32px; }
+  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
+  .PracBox h4 { font-size: 22px; }
+  .focusText h4 { font-size: 24px; }
+  .LeftHeroDiv .heroPara .paraitem p, .whocareData .lftcare p, .betInner p, .FocusTexted p, .PracBox p, .focusText p { font-size: 16px; }
+  a.Fillbtn, a.UnFillbtn { font-size: 16px; padding: 12px 24px; min-height: 45px;}
+
+  /* --- Hero Buttons --- */
+  .LeftHeroDiv .HeroBtn {
+    flex-direction: row;
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+  }
+  .LeftHeroDiv .HeroBtn a {
+    flex: 1;
+    max-width: 180px;
+  }
+
+  /* --- Practice & Focus Sections (2 columns as per Figma) --- */
+  .Practice_Box_Data,
+  .Focus_data {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .PracBox, .FocusItem {
+    padding: 20px;
+    min-height: 0;
+  }
+  .Focus_data > .FocusItem:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: auto;
+    max-width: 100%;
+  }
+
+  /* --- Better Care Section --- */
+  .betInner {
+    gap: 30px;
+  }
+  .lftbetter, .rytbetter {
+    padding: 20px;
+  }
+  .BettercareBox {
+    border-radius: 28px;
+  }
+}
+
+/* == 3. VERY SMALL MOBILE STYLES (max-width: 480px) == */
+@media (max-width: 480px) {
+  /* --- Typography --- */
+  .LeftHeroDiv .herotext h1 { font-size: 28px; }
+  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 24px; }
+  .PracBox h4 { font-size: 18px; word-break: break-word; }
+  .focusText h4 { font-size: 20px; word-break: break-word; }
+  .PracBox p, .focusText p { font-size: 13px; }
+
+ /* --- Hero Section --- */
+.LeftHeroDiv .HeroBtn {
+  flex-direction: row; /* Keep buttons side-by-side */
+  justify-content: center;
+  width: 100%;
+  max-width: none;
+}
+.LeftHeroDiv .HeroBtn a {
+  flex: 1; /* Allow buttons to share space equally */
+  padding: 12px 10px; /* Adjust padding for smaller text */
+  font-size: 14px; /* Make font smaller to fit */
+  min-height: 45px;
+}
+
+  /* --- Make Grids Flexible on Small Screens --- */
+  .Practice_Box_Data,
+  .Focus_data {
+    gap: 10px;
+  }
+  .PracBox, .FocusItem {
+    padding: 15px;
+  }
+  .whocareData .rytcare .carelog {
+    gap: 20px;
+    justify-items: center;
+  }
+   .whocareData .rytcare .carelog img {
+    max-width: 100px;
+  }
 }
