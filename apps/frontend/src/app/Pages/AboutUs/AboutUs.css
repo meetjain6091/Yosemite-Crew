@@ -322,6 +322,9 @@
     .AboutHeroSec, .OurStorySec, .AbtTeamSec {
         padding: 60px 15px;
     }
+    .AboutHeroSec {
+    background-position: 25% 50%; /* Shifts the image slightly to the left */
+    }
     .AboutHeroSec .AbtHeroData .abttopHero h2,
     .AbutheroBtm h2,
     .OurStorySec .StoryData .storyTexted h2,
@@ -352,8 +355,11 @@
     .AboutHeroSec, .OurStorySec, .AbtTeamSec {
         padding: 40px 15px;
     }
+   .AboutHeroSec {
+    background-position: 40% 50%; /* Shifts the image slightly to the left */
+    }
     .AboutHeroSec .AbtHeroData {
-        gap: 540px;
+        gap: 150px;
     }
     .AboutHeroSec .AbtHeroData .abttopHero h2,
     .AbutheroBtm h2,
