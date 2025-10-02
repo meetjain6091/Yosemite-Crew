@@ -5,26 +5,35 @@ import { Container } from 'react-bootstrap';
 import Image from 'next/image';
 import Footer from '@/app/Components/Footer/Footer';
 
-// CORRECTED: Team data now matches the original website's order, names, taglines, and images.
 const teamData = [
     {
         id: 1,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team1.png',
-    },
-    {
-        id: 2,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team2.png',
-    },
-    {
-        id: 3,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team3.png',
-    },
-    {
-        id: 4,
+        name: 'Anna',
+        tagline: '#operation, data and compliance',
         image: 'https://d2il6osz49gpup.cloudfront.net/Images/team4.png',
     },
     {
+        id: 2,
+        name: 'Panvi',
+        tagline: '#memelord',
+        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team3.png',
+    },
+    {
+        id: 3,
+        name: 'Ankit',
+        tagline: '#leaders_eat_last',
+        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team2.png',
+    },
+    {
+        id: 4,
+        name: 'Surbhi',
+        tagline: '#pixel_knight',
+        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team1.png',
+    },
+    {
         id: 5,
+        name: 'Suryansh',
+        tagline: '#bit_warrior',
         image: 'https://d2il6osz49gpup.cloudfront.net/Images/team5.png',
     },
 ];
