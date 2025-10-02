@@ -1,7 +1,6 @@
-/* =================================== */
-/* ========== DESKTOP STYLES ========== */
-/* =================================== */
-
+/* ======================================================== */
+/* BASE & DESKTOP STYLES                     */
+/* ======================================================== */
 .BuildLaunchTabSec {
     display: flex;
     align-items: stretch;
@@ -9,6 +8,13 @@
     background: #FFF2E3;
     border-radius: 24px;
     overflow: hidden;
+    position: relative; /* Needed for mobile nav positioning */
+}
+
+.desktop-tabs-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 .LaunchTabDiv {
@@ -18,14 +24,15 @@
     justify-content: center;
     cursor: pointer;
     color: var(--white-text);
-    transition: flex-grow 0.3s ease, background-color 0.3s ease;
+    transition: flex-grow 0.4s ease;
     overflow: hidden;
     position: relative;
     width: 88px;
+    flex-grow: 1;
 }
 
 .LaunchTabDiv.active {
-    flex-grow: 3;
+    flex-grow: 15;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -37,12 +44,11 @@
     width: 88px;
     padding: 30px 15px;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .LaunchTabDiv:first-child .BuildText h6,
-.LaunchTabDiv:first-child .BuildText h3 {
-    color: var(--white-text);
-}
+.LaunchTabDiv:first-child .BuildText h3,
 .LaunchTabDiv.active:first-child .BuildText h6,
 .LaunchTabDiv.active:first-child .BuildText h3 {
     color: var(--white-text);
@@ -69,65 +75,73 @@
 
 .GrowTab_Content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--whitebg);
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: var(--whitebg);
     display: grid;
-    grid-template-columns: 85px auto;
+    grid-template-columns: 88px auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.LaunchTabDiv.active .GrowTab_Content {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .GrowTabInner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 48px;
+    gap: 40px;
     justify-content: center;
     background: var(--whitebg);
-    padding: 20px;
+    padding: 25px;
+    overflow-y: auto;
 }
 
-.GrowTabInner .IconPic {
-    width: 100%;
+.IconPic {
     display: flex;
     justify-content: center;
 }
 
-.GrowTabInner .BottomText {
+.BottomText {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px;
 }
 
-.GrowTabInner .BottomText .Texted {
+.Texted {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
 }
 
-.GrowTabInner .BottomText .Texted h2 {
+.Texted h2 {
     font-size: 26px;
     font-weight: 500;
+    line-height: 120%;
     color: var(--black-text);
     margin: 0;
 }
 
-.GrowTabInner .BottomText .Texted ul {
+.Texted ul {
     padding: 0;
+    list-style: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
 }
 
-.GrowTabInner .BottomText .Texted ul li {
-    padding: 0;
+.Texted ul li {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -139,118 +153,109 @@
     text-align: left;
 }
 
-
-/* =================================== */
-/* ========== MOBILE STYLES ========== */
-/* =================================== */
-
-/* Hide desktop-specific elements on mobile */
-@media (max-width: 768px) {
-    .LaunchTabDiv .BuildText,
-    .LaunchTabDiv .GrowTab_Content {
-        display: none;
-    }
-}
-
-/* Show mobile-specific elements only on mobile */
-.mobile-content,
+/* Hide mobile elements on desktop by default */
+.mobile-content-container,
 .mobile-tab-nav {
     display: none;
 }
-@media (max-width: 768px) {
-    .mobile-content,
-    .mobile-tab-nav {
-        display: block;
-    }
-}
 
-/* Main mobile container */
-@media (max-width: 768px) {
+
+/* ======================================================== */
+/* RESPONSIVE STYLES                       */
+/* ======================================================== */
+@media screen and (max-width: 768px) {
+    /* Hide the entire desktop structure */
+    .desktop-tabs-container {
+        display: none;
+    }
+
+    /* Show the mobile-specific elements */
+    .mobile-content-container,
+    .mobile-tab-nav {
+        display: flex; /* Use flex for nav */
+    }
+    .mobile-content-container {
+        display: block; /* Use block for content */
+    }
+
+    /* Main container styling for mobile */
     .BuildLaunchTabSec {
         height: auto;
+        min-height: 540px;
         flex-direction: column;
         background: var(--whitebg);
-        border: 1px solid var(--lightgrey);
-        box-shadow: 0px 0px 8px 0px #55413414;
-        padding-bottom: 80px; /* Space for the floating nav */
+        border: 1px solid #e0e0e0;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
     }
 
-    .LaunchTabDiv {
-        width: 100%;
-        display: none; /* Hide all desktop tabs */
+    .mobile-content-container {
+        padding: 20px 20px 80px 20px; /* Padding for content + space for nav bar */
     }
-    .LaunchTabDiv.active {
-        display: block; /* Show only the active tab's content */
+
+    .mobile-content-container .GrowTabInner {
+        padding: 0;
+        gap: 24px;
+        align-items: flex-start;
+    }
+    .mobile-content-container .IconPic {
+        justify-content: flex-start;
+    }
+    .mobile-content-container .Texted h2 {
+        font-size: 22px;
+    }
+    .mobile-content-container .Texted ul li {
+        font-size: 14px;
+    }
+
+
+    /* === CORRECTED MOBILE TAB NAVIGATION (matches Figma) === */
+    .mobile-tab-nav {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        height: 50px;
+        background: rgba(233, 242, 253, 0.95);
+        border-radius: 25px;
+        align-items: center;
+        z-index: 10;
+        backdrop-filter: blur(5px);
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .mobile-tab-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        border-radius: 20px;
+        font-family: var(--grotesk-font);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        background: transparent;
+        color: #333;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .mobile-tab-button.active {
+        background: #247AED;
+        color: white;
+        box-shadow: 0px 2px 8px rgba(36, 122, 237, 0.3);
+        flex-grow: 1;
+        flex-shrink: 1;
+        padding: 0 12px;
+    }
+
+    .mobile-tab-button:not(.active) {
         flex-grow: 0;
-        box-shadow: none;
-        background: var(--whitebg);
+        padding: 0 12px;
+        min-width: 40px;
     }
-}
-
-/* Mobile Content Styling */
-.mobile-content .GrowTabInner {
-    padding: 30px 20px 20px;
-    gap: 24px;
-    align-items: flex-start;
-    box-shadow: none;
-}
-.mobile-content .GrowTabInner .BottomText {
-    width: 100%;
-}
-.mobile-content .GrowTabInner .BottomText .Texted h2 {
-    font-size: 24px;
-}
-.mobile-content .GrowTabInner .BottomText .Texted ul li {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* Floating Mobile Navigation Bar */
-.mobile-tab-nav {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(224, 224, 224, 0.5);
-    padding: 5px;
-}
-
-.mobile-tab-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    padding: 0 12px;
-    border-radius: 20px;
-    font-family: var(--grotesk-font);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    background: transparent;
-    color: #555;
-    white-space: nowrap;
-    min-width: 40px;
-    flex: 1 1 0;
-}
-
-.mobile-tab-button.active {
-    background: #247AED;
-    color: white;
-    box-shadow: 0px 2px 8px rgba(36, 122, 237, 0.3);
-}
-
-.mobile-tab-button:not(.active):hover {
-    background: rgba(36, 122, 237, 0.1);
-    color: #247AED;
 }

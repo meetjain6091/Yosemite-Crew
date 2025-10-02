@@ -337,6 +337,13 @@ body {
     content: " ";
     position: absolute;
     background: url('https://d2il6osz49gpup.cloudfront.net/Images/devlins.png') no-repeat;
+    background-size: contain;   /* FIX: Prevents stretching and cropping */
+    background-position: center;/* FIX: Keeps the image centered */
+    width: 100%;                /* FIX: Spans the container width */
+    height: 100%;               /* FIX: Spans the container height */
+    left: 50%;                  /* FIX: Centers horizontally */
+    top: 50%;                   /* FIX: Centers vertically */
+    transform: translate(-50%, -50%); /* FIX: Ensures perfect centering */
     background-size: 100% 100%;
     width: 744px;
     left: -150px;
@@ -702,7 +709,7 @@ body {
   }
 
   .LeftDevBanr .devbanrtext h2 {
-    font-size: 36px;
+    font-size: 28px;
     line-height: 1.2;
   }
 
@@ -739,7 +746,7 @@ body {
   }
 
   .YousmiteCrew h4 {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .DevYousmiteBoxed {
@@ -776,12 +783,34 @@ body {
     border-radius: 20px;
   }
 
-  .crewbox1, .crewbox2, .crewbox3, .crewbox4, .crewbox5, .crewbox6 {
-    width: 100%;
-    max-width: 100%;
+  /* --- FIX for Text + Image Boxes on Mobile --- */
+
+/* Targets the boxes with the problematic layout */
+.crewbox1,
+.crewbox3,
+.crewbox6 {
+    display: flex;          /* Use flexbox for better control */
+    flex-direction: column; /* Stack the text and image vertically */
+    justify-content: space-between; /* Pushes content apart */
+    align-items: center;    /* Center-align items horizontally */
+    text-align: center;     /* Center the text inside the text container */
+}
+
+/* Resets the image positioning so it behaves correctly */
+.crewbox1 img,
+.crewbox3 img,
+.crewbox6 img {
+    position: static; /* This is the key fix: removes absolute positioning */
+    margin-top: 16px;   /* Adds some space above the image */
+    max-width: 100px;   /* Controls the image size to prevent overflow */
     height: auto;
-    min-height: 160px;
-  }
+}
+
+.crewbox1 .crewText,
+.crewbox3 .crewText,
+.crewbox6 .crewText {
+    width: 100%;
+}
 
   .crewText h3 {
     font-size: 22px;
@@ -836,7 +865,7 @@ body {
   }
 
   .leftResorch h2 {
-    font-size: 28px;
+    font-size: 40px;
     max-width: 100%;
     line-height: 1.2;
   }
@@ -866,7 +895,7 @@ body {
   }
 
   .leftSimpleStep h2 {
-    font-size: 36px;
+    font-size: 28px;
   }
 
   .RytSimpleStep {
@@ -892,22 +921,32 @@ body {
   }
 
   .DevPriceHead h2 {
-    font-size: 32px;
+    font-size: 28px;
   }
 
-  .DevPriceCard {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  /* === FIX STARTS HERE === */
+.DevPriceCard {
+    grid-template-columns: 1fr; /* Change to a single column */
+    gap: 20px;
     padding-top: 40px;
-  }
+    justify-items: center; /* Center the single column of cards */
+}
 
-  .DevPricBox {
+/* Reset the tablet-specific centering for the last item */
+.DevPriceCard .DevPricBox:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: 350px; /* Set a max-width for consistency */
+    justify-self: center;
+}
+
+.DevPricBox {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    min-height: 340px;
-    padding: 160px 20px 35px 20px;
-  }
+    max-width: 350px; /* Set a max-width for all cards */
+    height: auto;     /* Let height adjust to content */
+    min-height: 0;    /* Remove minimum height */
+    padding: 140px 20px 35px 20px; /* Adjust padding */
+}
+/* === FIX ENDS HERE === */
 
   .DevPricBox .devpboxtext h4 {
     font-size: 32px;
@@ -943,7 +982,7 @@ body {
   }
 
   .leftBuild h4 {
-    font-size: 36px;
+    font-size: 28px;
   }
 
   .leftBuild p {
@@ -955,264 +994,18 @@ body {
     width: 100%;
     object-fit: cover;
   }
+  /* === Add this NEW rule inside the @media screen and (max-width: 768px) block === */
+
+.leftBuilinner .Fillbtn {
+    width: 230px; /* Sets the button's width to match Figma */
+    max-width: 100%; /* Ensures it doesn't overflow on even smaller screens */
+    flex-shrink: 0; /* Prevents the button from shrinking unexpectedly */
+    flex-grow: 0; /* Prevents the button from growing to fill available space */
+}
 }
 
 /* Small Mobile Styles (max-width: 375px) */
-@media screen and (max-width: 375px) {
-  * {
-    max-width: 100vw;
-    box-sizing: border-box;
-  }
 
-  body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-
-  .DevlpHeroSec {
-    padding: 40px 15px;
-    overflow-x: hidden;
-  }
-
-  .DevlpHeroData {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .LeftDevBanr {
-    gap: 20px;
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .RytDevBanr {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .LeftDevBanr .devbanrtext h2 {
-    font-size: 28px;
-    line-height: 1.1;
-  }
-
-  .LeftDevBanr .devbanrtext p {
-    font-size: 14px;
-    line-height: 1.3;
-  }
-
-  .DevbanrBtn a {
-    font-size: 14px;
-    padding: 10px 16px;
-    min-height: 40px;
-  }
-
-  .RytDevBanr img {
-    max-height: 280px;
-  }
-
-  .DevlYousmiteSec {
-    padding: 40px 0px;
-  }
-
-  .YousmiteCrew h4 {
-    font-size: 26px;
-  }
-
-  .YousmiteCrew p {
-    font-size: 13px;
-  }
-
-  .DevYousmiteBoxed {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 8px;
-    padding: 30px 0px;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .DevYousmiteBoxed::after {
-    position: absolute;
-    content: " ";
-    background: url('https://d2il6osz49gpup.cloudfront.net/Images/devcoseafter.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 80px;
-    width: 80px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-  }
-
-  .DevCrewBox {
-    padding: 12px 8px;
-    min-height: 130px;
-    border-radius: 16px;
-  }
-
-  .crewText h3 {
-    font-size: 18px;
-    line-height: 1.1;
-  }
-
-  .crewText p {
-    font-size: 11px;
-    line-height: 1.2;
-  }
-
-  .DevlpToolSec {
-    padding: 40px 0px 0px 0px;
-  }
-
-  .TopResorchTool {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .leftResorch {
-    flex: none;
-    max-width: 100%;
-  }
-
-  .leftResorch h2 {
-    font-size: 24px;
-    max-width: 100%;
-    line-height: 1.1;
-  }
-
-  .leftResorch p {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-
-  .RytResorch {
-    flex: none;
-    max-width: 100%;
-  }
-
-  .RytResorch p {
-    font-size: 14px;
-    max-width: 100%;
-    line-height: 1.3;
-  }
-
-  .BottomResorchTool {
-    padding: 20px 0px;
-  }
-
-  .SimpleStepSec {
-    padding: 80px 0px 40px 0px;
-  }
-
-  .leftSimpleStep {
-    text-align: center;
-    align-items: center;
-  }
-
-  .leftSimpleStep h2 {
-    font-size: 28px;
-  }
-
-  .leftSimpleStep p {
-    font-size: 13px;
-  }
-
-  .Stepitems {
-    gap: 16px;
-  }
-
-  .Stepitems .Stepstext h4 {
-    font-size: 20px;
-  }
-
-  .Stepitems .Stepstext p {
-    font-size: 12px;
-  }
-
-  .DevlpPricingSec {
-    padding: 40px 0px 80px 0px;
-  }
-
-  .DevPriceHead h2 {
-    font-size: 26px;
-  }
-
-  .DevPriceHead p {
-    font-size: 13px;
-  }
-
-  .DevPriceCard {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding-top: 30px;
-  }
-
-  .DevPricBox {
-    padding: 120px 12px 30px 12px;
-    min-height: 280px;
-  }
-
-  .DevPricBox .devpboxtext h4 {
-    font-size: 26px;
-  }
-
-  .DevPricBox .devpboxtext p {
-    font-size: 14px;
-  }
-
-  .DevlpBuildSec {
-    padding: 30px 0px 80px 0px;
-  }
-
-  .ReadyBuildData {
-    grid-template-columns: 1fr;
-  }
-
-  .leftBuild {
-    border-radius: 38px 38px 0px 0px;
-    padding: 20px 16px;
-    text-align: center;
-  }
-
-  .RytBuild {
-    border-radius: 0px 0px 38px 38px;
-  }
-
-  .leftBuilinner {
-    gap: 16px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .leftBuild h4 {
-    font-size: 28px;
-  }
-
-  .leftBuild p {
-    font-size: 14px;
-  }
-
-  .RytBuild img {
-    max-height: 250px;
-  }
-}
 
 /* Extra Small Mobile and Short Screens (max-width: 320px or short height) */
 @media screen and (max-width: 320px), screen and (max-height: 600px) {
@@ -1519,6 +1312,14 @@ body {
   .RytBuild img {
     max-height: 180px;
   }
+  /* === Add this NEW rule inside the @media screen and (max-width: 768px) block === */
+
+.leftBuilinner .Fillbtn {
+    width: 230px; /* Sets the button's width to match Figma */
+    max-width: 100%; /* Ensures it doesn't overflow on even smaller screens */
+    flex-shrink: 0; /* Prevents the button from shrinking unexpectedly */
+    flex-grow: 0; /* Prevents the button from growing to fill available space */
+}
 }
 
 /* Landscape Mobile and Very Short Height Screens */
@@ -1703,4 +1504,58 @@ body {
   .RytBuild img {
     max-height: 140px;
   }
+  /* === Add this NEW rule inside the @media screen and (max-width: 768px) block === */
+
+.leftBuilinner .Fillbtn {
+    width: 230px; /* Sets the button's width to match Figma */
+    max-width: 100%; /* Ensures it doesn't overflow on even smaller screens */
+    flex-shrink: 0; /* Prevents the button from shrinking unexpectedly */
+    flex-grow: 0; /* Prevents the button from growing to fill available space */
 }
+}
+@media screen and (max-width: 375px) {
+
+    .DevPriceHead h2 {
+    font-size: 26px;
+}
+.DevPriceHead p {
+    font-size: 13px;
+}
+.DevPriceCard {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-top: 30px;
+    justify-items: center; /* Ensures items are centered in their column */
+}
+
+/* This new rule centers the last card when there's an odd number */
+.DevPriceCard .DevPricBox:last-child:nth-child(odd) {
+    grid-column: 1 / -1;   /* Makes the last item's cell span both columns */
+    justify-self: center;  /* Centers the item within that full-width cell */
+    width: 100%;           /* Ensures width is calculated relative to the grid */
+    max-width: 170px;      /* Sets a max-width to match the items above */
+}
+
+.DevPricBox {
+    padding: 120px 15px 30px 15px; /* Adjusted padding */
+    min-height: auto;      /* Let height adjust to content */
+    width: 100%;           /* Ensures box fits within the grid cell */
+    max-width: none;       /* Removes any conflicting max-width from desktop styles */
+}
+
+/* This resizes the background icons to prevent them from overflowing */
+.DevPricBox::after,
+.DevPricBox:nth-of-type(2)::after,
+.DevPricBox:nth-of-type(3)::after {
+    width: 100px;
+    height: 120px;
+}
+
+.DevPricBox .devpboxtext h4 {
+    font-size: 24px; /* Slightly adjusted for better fit */
+}
+.DevPricBox .devpboxtext p {
+    font-size: 14px;
+}
+
+  }
