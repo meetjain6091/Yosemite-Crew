@@ -1,13 +1,7 @@
-/* ======================================================== */
-/*             BASE & DESKTOP STYLES                */
-/* ======================================================== */
-
-/* General Overflow Prevention */
 body, html {
   overflow-x: hidden;
 }
 
-/* HomeHeroSection started  */
 .HomeHeroSection {
   padding: 80px 0px;
   display: flex;
@@ -124,9 +118,7 @@ a.UnFillbtn {
 a.UnFillbtn:hover {
   box-shadow: 0px 2px 70px 6px #00000029;
 }
-/* HomeHeroSection Ended  */
 
-/* PracticedSection Started  */
 .PracticedSection {
   padding: 80px 0px;
 }
@@ -180,9 +172,7 @@ a.UnFillbtn:hover {
   margin: 0;
   opacity: 80%;
 }
-/* PracticedSection Ended  */
 
-/* FocusSection Started */
 .FocusSection {
   padding: 80px 0px;
 }
@@ -263,9 +253,7 @@ a.UnFillbtn:hover {
   opacity: 80%;
   font-family: var(--satoshi-font);
 }
-/* FocusSection ended  */
 
-/* WhoCareSection Started  */
 .WhoCareSection {
   padding: 50px 0px;
 }
@@ -316,9 +304,7 @@ a.UnFillbtn:hover {
   justify-content: space-evenly;
   width: 100%;
 }
-/* WhoCareSection Ended   */
 
-/* BetterCareSec Started */
 .BetterCareSec {
   padding: 100px 0px 200px 0px;
 }
@@ -375,16 +361,8 @@ a.UnFillbtn:hover {
   font-family: var(--satoshi-font);
   margin: 0;
 }
-/* BetterCareSec Ended */
 
-
-/* ======================================================== */
-/* ===== FINAL RESPONSIVE STYLES (FIGMA ALIGNED) ====== */
-/* ======================================================== */
-
-/* == 1. TABLET STYLES (max-width: 1024px) == */
 @media (max-width: 1024px) {
-  /* --- General Section Padding --- */
   .HomeHeroSection, .PracticedSection, .FocusSection, .WhoCareSection, .BetterCareSec {
     padding: 60px 25px;
   }
@@ -392,11 +370,9 @@ a.UnFillbtn:hover {
     padding-bottom: 120px;
   }
 
-  /* --- Typography --- */
   .LeftHeroDiv .herotext h1 { font-size: 40px; }
-  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 34px; }
+  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 40px; }
 
-  /* --- Hero Section --- */
   .HomeHeroSection .HeroData {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -420,32 +396,26 @@ a.UnFillbtn:hover {
       width: auto;
   }
 
-  /* --- Practice Section --- */
   .PractHeading h2 {
     text-align: center;
   }
   .Practice_Box_Data {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .PracBox {
     max-width: none;
   }
 
-  /* --- Focus Section --- */
   .Focus_data {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .FocusTexted {
     max-width: 100%;
     min-width: 0;
   }
-  .Focus_data > .FocusItem:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    max-width: 50%;
-  }
 
-  /* --- Who Care Section --- */
   .whocareData {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -456,36 +426,33 @@ a.UnFillbtn:hover {
     align-items: center;
   }
   .whocareData .rytcare .carelog {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    gap: 30px;
-    max-width: 400px;
-  }
-
-  /* --- Better Care Section --- */
-  .BettercareBox {
-    grid-template-columns: 1fr;
-  }
-  .rytbetter {
-    order: 1;
-    padding: 0;
-  }
-  .lftbetter {
-    order: 2;
-    text-align: center;
-  }
-  .rytbetter img {
-    border-radius: 28px 28px 0 0;
-  }
-  .betInner {
-    align-items: center;
-  }
+  display: grid;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
-/* == 2. MOBILE STYLES (max-width: 767px) == */
+.BettercareBox {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+.rytbetter {
+  order: initial;
+}
+.lftbetter {
+  order: initial;
+  text-align: left;
+}
+.rytbetter img {
+  border-radius: 0;
+}
+.betInner {
+  align-items: flex-start;
+}
+}
+}
 @media (max-width: 767px) {
-  /* --- General Section Padding & Typography --- */
   .HomeHeroSection, .PracticedSection, .FocusSection, .WhoCareSection, .BetterCareSec {
     padding: 40px 15px;
   }
@@ -499,7 +466,6 @@ a.UnFillbtn:hover {
   .LeftHeroDiv .heroPara .paraitem p, .whocareData .lftcare p, .betInner p, .FocusTexted p, .PracBox p, .focusText p { font-size: 16px; }
   a.Fillbtn, a.UnFillbtn { font-size: 16px; padding: 12px 24px; min-height: 45px;}
 
-  /* --- Hero Buttons --- */
   .LeftHeroDiv .HeroBtn {
     flex-direction: row;
     width: 100%;
@@ -511,7 +477,6 @@ a.UnFillbtn:hover {
     max-width: 180px;
   }
 
-  /* --- Practice & Focus Sections (2 columns as per Figma) --- */
   .Practice_Box_Data,
   .Focus_data {
     grid-template-columns: repeat(2, 1fr);
@@ -527,42 +492,46 @@ a.UnFillbtn:hover {
     max-width: 100%;
   }
 
-  /* --- Better Care Section --- */
-  .betInner {
-    gap: 30px;
-  }
-  .lftbetter, .rytbetter {
+.BettercareBox {
+  grid-template-columns: 1fr;
+  border-radius: 28px;
+}
+.lftbetter {
+  text-align: center;
+  padding: 20px;
+}
+.rytbetter {
     padding: 20px;
-  }
-  .BettercareBox {
-    border-radius: 28px;
-  }
+}
+.rytbetter img {
+  border-radius: 28px 28px 0 0;
+}
+.betInner {
+  align-items: center;
+  gap: 30px;
+}
 }
 
-/* == 3. VERY SMALL MOBILE STYLES (max-width: 480px) == */
 @media (max-width: 480px) {
-  /* --- Typography --- */
   .LeftHeroDiv .herotext h1 { font-size: 28px; }
-  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 24px; }
+  .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
   .PracBox h4 { font-size: 18px; word-break: break-word; }
   .focusText h4 { font-size: 20px; word-break: break-word; }
   .PracBox p, .focusText p { font-size: 13px; }
 
- /* --- Hero Section --- */
 .LeftHeroDiv .HeroBtn {
-  flex-direction: row; /* Keep buttons side-by-side */
+  flex-direction: row;
   justify-content: center;
   width: 100%;
   max-width: none;
 }
 .LeftHeroDiv .HeroBtn a {
-  flex: 1; /* Allow buttons to share space equally */
-  padding: 12px 10px; /* Adjust padding for smaller text */
-  font-size: 14px; /* Make font smaller to fit */
+  flex: 1;
+  padding: 12px 10px;
+  font-size: 14px;
   min-height: 45px;
 }
 
-  /* --- Make Grids Flexible on Small Screens --- */
   .Practice_Box_Data,
   .Focus_data {
     gap: 10px;
@@ -575,6 +544,6 @@ a.UnFillbtn:hover {
     justify-items: center;
   }
    .whocareData .rytcare .carelog img {
-    max-width: 100px;
+    max-width: 115px;
   }
 }
