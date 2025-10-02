@@ -360,7 +360,9 @@
     .OurStorySec .StoryData .storyTexted h2,
     .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
         font-size: 28px;
-        color: black;
+    }
+    h2 {
+    color: black;
     }
     .AboutHeroSec .AbtHeroData .abttopHero h4 {
         font-size: 18px;
