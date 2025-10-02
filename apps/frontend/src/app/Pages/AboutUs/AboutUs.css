@@ -353,13 +353,14 @@
         padding: 40px 15px;
     }
     .AboutHeroSec .AbtHeroData {
-        gap: 420px;
+        gap: 540px;
     }
     .AboutHeroSec .AbtHeroData .abttopHero h2,
     .AbutheroBtm h2,
     .OurStorySec .StoryData .storyTexted h2,
     .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
         font-size: 28px;
+        color: black;
     }
     .AboutHeroSec .AbtHeroData .abttopHero h4 {
         font-size: 18px;
