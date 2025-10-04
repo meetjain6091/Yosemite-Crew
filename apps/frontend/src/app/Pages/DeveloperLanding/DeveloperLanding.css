@@ -533,6 +533,20 @@ body {
     overflow: hidden;
   }
 
+  .Stepitems:nth-child(1) img {
+    width: 37px !important;
+    height: 80px !important;
+  }
+
+  .Stepitems:nth-child(2) img {
+    width: 37px !important;
+    height: 80px !important;
+  }
+
+  .Stepitems:nth-child(3) img {
+    width: 37px !important;
+    height: 30px !important;
+  }
   .LeftDevBanr {
     order: 1;
     max-width: 100%;
@@ -718,7 +732,7 @@ body {
   }
 
   .DevlYousmiteSec {
-    padding: 60px 0px;
+    padding: 20px 0px;
   }
 
   .YousmiteCrew h4 {
@@ -821,13 +835,14 @@ body {
 
   .DevlpToolSec {
     padding: 60px 0px 0px 0px;
+    background-color: #E9F1FF;
   }
 
   .TopResorchTool {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
-    text-align: center;
+    text-align: left;
     justify-content: center;
   }
 
@@ -889,36 +904,37 @@ body {
   }
 
   .DevlpPricingSec {
-    padding: 60px 0px 120px 0px;
+    padding: 60px 0px 30px 0px;
   }
 
   .DevPriceHead h2 {
     font-size: 28px;
   }
 
-.DevPriceCard {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding-top: 40px;
+  .DevPriceCard {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 30px;
     justify-items: center;
-}
+  }
 
-.DevPriceCard .DevPricBox:last-child:nth-child(odd) {
-    grid-column: auto;
-    max-width: 350px;
-    justify-self: center;
-}
+  .DevPriceCard .DevPricBox:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: 220px;
+  }
 
-.DevPricBox {
+  .DevPricBox {
     width: 100%;
     max-width: 350px;
     height: auto;
     min-height: 0;
     padding: 140px 20px 35px 20px;
-}
+  }
 
   .DevPricBox .devpboxtext h4 {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .DevPricBox .devpboxtext p {
@@ -967,7 +983,28 @@ body {
     width: 230px;
     max-width: 100%;
     flex-grow: 0;
-}
+    white-space: nowrap;
+  }
+  .DevPricBox:nth-of-type(1)::after {
+    background: url('https://d2il6osz49gpup.cloudfront.net/Images/fits1.png') no-repeat;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 140px;
+  }
+
+  .DevPricBox:nth-of-type(2)::after {
+    background: url('https://d2il6osz49gpup.cloudfront.net/Images/fits2.png') no-repeat;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 140px;
+  }
+
+  .DevPricBox:nth-of-type(3)::after {
+    background: url('https://d2il6osz49gpup.cloudfront.net/Images/fits3.png') no-repeat;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 140px;
+  }
 }
 
 @media screen and (max-width: 320px), screen and (max-height: 600px) {
@@ -1229,7 +1266,7 @@ body {
   }
 
   .DevPricBox .devpboxtext h4 {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.2;
   }
 
@@ -1466,7 +1503,7 @@ body {
     width: 230px;
     max-width: 100%;
     flex-grow: 0;
-}
+  }
 }
 @media screen and (max-width: 375px) {
 
