@@ -77,12 +77,12 @@ function HomePage() {
               <div className="HeroBtn">
                 <FillBtn
                   icon={<IoIosFlash />}
-                  text=" Get Started"
+                  text=" Book a Demo"
                   href="/signup"
                 />
                 <UnFillBtn
                   icon={<MdOutlineAccessTimeFilled />}
-                  text="Book a Demo"
+                  text="Learn more"
                   href="/bookDemo"
                 />
               </div>

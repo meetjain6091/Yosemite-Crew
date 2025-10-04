@@ -125,7 +125,7 @@ a.UnFillbtn:hover {
 .PracticedData {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 5px;
 }
 .PractHeading h2 {
   font-family: var(--grotesk-font);
@@ -426,45 +426,60 @@ a.UnFillbtn:hover {
     align-items: center;
   }
   .whocareData .rytcare .carelog {
-  display: grid;
-  width: 100%;
-  gap: 30px;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    display: grid;
+    width: 100%;
+    gap: 30px;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .BettercareBox {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .BettercareBox .rytbetter {
+    order: initial;
+  }
+  .BettercareBox .lftbetter {
+    order: initial;
+    text-align: left;
+  }
+  .BettercareBox .rytbetter img {
+    border-radius: 0;
+  }
+  .BettercareBox .betInner {
+    align-items: flex-start;
+  }
+  .PracBox img {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    object-fit: contain;
+  }
+  .FocusItem img {
+  width: 78px;
+  height: 78px;
+  min-width: 78px;
+  object-fit: contain;
+}
 }
 
-.BettercareBox {
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-.rytbetter {
-  order: initial;
-}
-.lftbetter {
-  order: initial;
-  text-align: left;
-}
-.rytbetter img {
-  border-radius: 0;
-}
-.betInner {
-  align-items: flex-start;
-}
-}
-}
 @media (max-width: 767px) {
-  .HomeHeroSection, .PracticedSection, .FocusSection, .WhoCareSection, .BetterCareSec {
-    padding: 40px 15px;
+  .HomeHeroSection, .FocusSection, .WhoCareSection, .BetterCareSec {
+    padding: 20px 15px;
+  }
+  .PracticedSection {
+    padding: 40px 24px;
   }
   .BetterCareSec {
     padding-bottom: 80px;
   }
   .LeftHeroDiv .herotext h1 { font-size: 32px; }
   .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
-  .PracBox h4 { font-size: 22px; }
   .focusText h4 { font-size: 24px; }
-  .LeftHeroDiv .heroPara .paraitem p, .whocareData .lftcare p, .betInner p, .FocusTexted p, .PracBox p, .focusText p { font-size: 16px; }
-  a.Fillbtn, a.UnFillbtn { font-size: 16px; padding: 12px 24px; min-height: 45px;}
+  .LeftHeroDiv .heroPara .paraitem p, .whocareData .lftcare p, .betInner p, .FocusTexted p, .focusText p { font-size: 13px; }
+  a.Fillbtn, a.UnFillbtn { font-size: 13px; padding: 12px 24px; min-height: 45px;}
 
   .LeftHeroDiv .HeroBtn {
     flex-direction: row;
@@ -480,70 +495,154 @@ a.UnFillbtn:hover {
   .Practice_Box_Data,
   .Focus_data {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 16px;
   }
-  .PracBox, .FocusItem {
-    padding: 20px;
-    min-height: 0;
+
+  .PracBox {
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    gap: 6px;
   }
+
+  .FocusItem {
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .PracBox h4 {
+    font-size: 18px;
+    padding-top: 0;
+  }
+
+  .PracBox p {
+    font-size: 14px;
+  }
+
   .Focus_data > .FocusItem:last-child:nth-child(odd) {
     grid-column: auto;
     justify-self: auto;
     max-width: 100%;
   }
 
-.BettercareBox {
-  grid-template-columns: 1fr;
-  border-radius: 28px;
+  .BettercareBox {
+    grid-template-columns: 1fr;
+    border-radius: 28px;
+  }
+  .lftbetter {
+    padding: 32px 16px;
+    text-align: center;
+  }
+  .rytbetter img {
+    width: 100%;
+    display: block;
+    border-radius: 0 0 28px 28px;
+  }
+  .betInner {
+    max-width: 306px;  
+    margin: 0 auto;
+    align-items: center;
+    gap: 17px;
+  }
+  .whocareData .rytcare .carelog {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 47px 41px;
+  width: 100%;
+  max-width: 328px;
+  margin: 0 auto;
+  justify-items: center;
 }
-.lftbetter {
-  text-align: center;
-  padding: 20px;
+
+.whocareData .rytcare .carelog img {
+  width: 100%;
+  height: auto;
 }
-.rytbetter {
-    padding: 20px;
+  .PracBox img {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    object-fit: contain;
+  }
+  .FocusItem img {
+  width: 78px;
+  height: 78px;
+  min-width: 78px;
+  object-fit: contain;
 }
-.rytbetter img {
-  border-radius: 28px 28px 0 0;
-}
-.betInner {
-  align-items: center;
-  gap: 30px;
-}
+.BettercareBox .betInner {
+    align-items: center;
+  }
+      .BettercareBox .lftbetter {
+        order: initial;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
   .LeftHeroDiv .herotext h1 { font-size: 28px; }
   .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 28px; }
-  .PracBox h4 { font-size: 18px; word-break: break-word; }
-  .focusText h4 { font-size: 20px; word-break: break-word; }
-  .PracBox p, .focusText p { font-size: 13px; }
+  .focusText h4 { font-size: 13px; word-break: break-word; }
 
-.LeftHeroDiv .HeroBtn {
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  max-width: none;
-}
-.LeftHeroDiv .HeroBtn a {
-  flex: 1;
-  padding: 12px 10px;
-  font-size: 14px;
-  min-height: 45px;
-}
+  .LeftHeroDiv .HeroBtn {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+  }
+  .LeftHeroDiv .HeroBtn a {
+    flex: 1;
+    padding: 12px 10px;
+    font-size: 14px;
+    min-height: 45px;
+  }
 
   .Practice_Box_Data,
   .Focus_data {
     gap: 10px;
   }
   .PracBox, .FocusItem {
-    padding: 15px;
+    min-height: 150px;
+    padding: 16px;
   }
+
+  .PracBox h4 {
+    font-size: 13px;
+  }
+
+  .PracBox p, .focusText p {
+    font-size: 8px;
+  }
+
   .whocareData .rytcare .carelog {
     gap: 20px;
     justify-items: center;
   }
-   .whocareData .rytcare .carelog img {
+    .whocareData .rytcare .carelog img {
     max-width: 115px;
   }
+  .PracBox img {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    object-fit: contain;
+  }
+  .FocusItem img {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  object-fit: contain;
+}
 }
