@@ -21,7 +21,7 @@
     justify-content: center;
     cursor: pointer;
     color: var(--white-text);
-    transition: flex-grow 0.4s ease;
+    transition: flex-grow 0.2s ease, background-color 0.2s ease;
     overflow: hidden;
     position: relative;
     width: 88px;
@@ -29,7 +29,7 @@
 }
 
 .LaunchTabDiv.active {
-    flex-grow: 15;
+    flex-grow: 25;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 

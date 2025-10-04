@@ -257,7 +257,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
     text-align: center;
 }
 .leftSimpleStep p , .DevPriceHead p{
@@ -274,7 +274,7 @@ body {
     font-family: var(--grotesk-font);
     font-size: 48px;
     font-weight: 500;
-    line-height: 57.6px;
+    line-height: 40.6px;
     letter-spacing: -0.02em;
     color: var(--black-text);
     margin: 0;
@@ -348,7 +348,7 @@ body {
     font-family: var(--grotesk-font);
     font-size: 40px;
     font-weight: 500;
-    line-height: 48.6px;
+    line-height: 32.6px;
     letter-spacing: -0.02em;
     color: var(--black-text);
     text-align: center;
@@ -914,7 +914,7 @@ body {
   .DevPriceCard {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding-top: 30px;
+    padding-top: 15px;
     justify-items: center;
   }
 
