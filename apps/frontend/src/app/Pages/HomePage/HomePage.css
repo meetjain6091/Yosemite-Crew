@@ -373,29 +373,39 @@ a.UnFillbtn:hover {
   .LeftHeroDiv .herotext h1 { font-size: 40px; }
   .PractHeading h2, .FocusTexted h2, .whocareData .lftcare h2, .betInner h2 { font-size: 40px; }
 
-  .HomeHeroSection .HeroData {
+   .HomeHeroSection .HeroData {
     grid-template-columns: 1fr;
     gap: 40px;
-    text-align: center;
     justify-items: center;
-  }
+    text-align: left;
+
   .RytHeroDiv {
     order: -1;
   }
+
   .LeftHeroDiv {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 330px;
   }
+
+  .LeftHeroDiv .herotext {
+    text-align: center;
+  }
+
   .LeftHeroDiv .HeroBtn {
     justify-content: center;
+    padding-top: 10px;
   }
+
   .LeftHeroDiv .herotext h1.type,
   .LeftHeroDiv .herotext .first,
   .LeftHeroDiv .herotext .second {
-      animation: none;
-      white-space: normal;
-      width: auto;
+    animation: none;
+    white-space: normal;
+    width: auto;
   }
-
   .PractHeading h2 {
     text-align: center;
   }
@@ -464,7 +474,7 @@ a.UnFillbtn:hover {
   object-fit: contain;
 }
 }
-
+}
 @media (max-width: 767px) {
   .HomeHeroSection, .FocusSection, .WhoCareSection, .BetterCareSec {
     padding: 20px 15px;
@@ -551,7 +561,7 @@ a.UnFillbtn:hover {
     border-radius: 0 0 28px 28px;
   }
   .betInner {
-    max-width: 306px;  
+    max-width: 306px;
     margin: 0 auto;
     align-items: center;
     gap: 17px;
