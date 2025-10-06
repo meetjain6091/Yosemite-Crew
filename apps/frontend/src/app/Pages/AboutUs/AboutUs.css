@@ -293,84 +293,180 @@
 }
 
 @media (max-width: 992px) {
-    .AboutHeroSec {
-        background-size: cover;
-        background-position: center;
-    }
-    .AboutHeroSec .AbtHeroData {
-        gap: 120px;
-    }
-    .AbutheroBtm .abtherocard {
-        flex-direction: column;
-        align-items: center;
-    }
-    .OurStorySec .StoryData {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .OurStorySec .StoryData .storyTexted, .OurStorySec .StoryData .storyTexted .ourstorypara {
-        padding-right: 0;
-        align-items: center;
-    }
-    .lftAbtImg {
-        max-width: 500px;
-        margin: 0 auto;
-    }
+  /* --- STYLES FOR OTHER SECTIONS --- */
+  .AboutHeroSec {
+    background-size: cover;
+    background-position: center;
+  }
+  .AboutHeroSec .AbtHeroData {
+    gap: 120px;
+  }
+  .AbutheroBtm .abtherocard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- START: Corrected rules for "Our Story" --- */
+  .OurStorySec .StoryData {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .OurStorySec .StoryData .storyTexted {
+    order: 1; /* Puts the text block first */
+    padding-right: 0;
+    align-items: center;
+  }
+
+  .OurStorySec .StoryData .storyTexted .ourstorypara {
+    padding-right: 0;
+    align-items: center;
+  }
+
+  .OurStorySec .StoryData .lftAbtImg {
+    order: 2; /* Puts the image second */
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  /* --- END: Corrected rules for "Our Story" --- */
 }
 
 @media (max-width: 767px) {
-    .AboutHeroSec, .OurStorySec, .AbtTeamSec {
-        padding: 60px 15px;
-    }
-    .AboutHeroSec {
-    background-position: 25% 50%; /* Shifts the image slightly to the left */
-    }
-    .AboutHeroSec .AbtHeroData .abttopHero h2,
-    .AbutheroBtm h2,
-    .OurStorySec .StoryData .storyTexted h2,
-    .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
-        font-size: 36px;
-    }
-    .AboutHeroSec .AbtHeroData .abttopHero h4,
-    .AbtTeamSec .AbtTeamdata .AbtTeamHead h4 {
-        font-size: 22px;
-    }
-    .OurStorySec .StoryData .storyTexted .ourstorypara h6,
-    .AbtTeamSec .AbtTeamdata .AbtTeamHead .para h6 {
-        font-size: 16px;
-    }
-    .AboutHeroSec .AbtHeroData .abttopHero {
-        padding: 24px;
-        min-height: auto;
-    }
-    .OurStorySec::after {
-        display: none;
-    }
-    .team-members-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .AboutHeroSec,
+  .OurStorySec,
+  .AbtTeamSec {
+    padding: 60px 15px;
+  }
+  .AboutHeroSec {
+    min-height: auto;
+    background-position: 25% 50%;
+  }
+  .AboutHeroSec .AbtHeroData {
+    gap: 80px;
+  }
+  .AboutHeroSec .AbtHeroData .abttopHero {
+    padding: 24px;
+    min-height: auto;
+  }
+  .OurStorySec::after {
+    display: none;
+  }
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Font size adjustments */
+  .AboutHeroSec .AbtHeroData .abttopHero h2,
+  .AbutheroBtm h2,
+  .OurStorySec .StoryData .storyTexted h2,
+  .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
+    font-size: 36px;
+  }
+  .AboutHeroSec .AbtHeroData .abttopHero h4,
+  .AbtTeamSec .AbtTeamdata .AbtTeamHead h4 {
+    font-size: 22px;
+  }
+  .OurStorySec .StoryData .storyTexted .ourstorypara h6,
+  .AbtTeamSec .AbtTeamdata .AbtTeamHead .para h6 {
+    font-size: 16px;
+  }
+
+  .AbutheroBtm .abtherocard .AbtCardItem {
+    width: 100%;
+    max-width: 320px;
+    min-height: auto;
+    background: var(--whitebg);
+    border-radius: 20px; /* ✅ full rounded */
+    box-shadow: 0px 28px 63.5px 0px #450E1529;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .AbutheroBtm .abtherocard .AbtCardItem .head {
+    background: var(--black-bg);
+    border-radius: 20px 20px 0 0;
+    padding: 12px 20px;
+  }
+
+  .AbutheroBtm .abtherocard .AbtCardItem .body {
+    padding: 0 20px 20px 20px;
+    min-height: unset; /* ✅ remove any forced height */
+  }
+
+  .AbutheroBtm .abtherocard .AbtCardItem .body p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--notibg);
+    margin: 0;
+  }
+  /* --- END: New card rules --- */
+
+  .OurStorySec::after {
+    display: none;
+  }
+
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-    .AboutHeroSec, .OurStorySec, .AbtTeamSec {
-        padding: 40px 15px;
-    }
-   .AboutHeroSec {
-    background-position: 40% 50%; /* Shifts the image slightly to the left */
-    }
-    .AboutHeroSec .AbtHeroData {
-        gap: 150px;
-    }
-    .AboutHeroSec .AbtHeroData .abttopHero h2,
-    .AbutheroBtm h2,
-    .OurStorySec .StoryData .storyTexted h2,
-    .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
-        font-size: 28px;
-    }
-    .AboutHeroSec .AbtHeroData .abttopHero h4 {
-        font-size: 18px;
-    }
-    .team-members-grid {
-        grid-template-columns: 1fr;
-    }
+  .AboutHeroSec,
+  .OurStorySec,
+  .AbtTeamSec {
+    padding: 40px 15px;
+  }
+
+  .AboutHeroSec {
+    background-position: 30% 50%;
+  }
+
+  .AboutHeroSec .AbtHeroData {
+    gap: 150px;
+  }
+
+  .AboutHeroSec .AbtHeroData .abttopHero {
+    max-width: 306px;
+    width: 100%;
+    padding: 35px 40px;
+    border-radius: 16px;
+    background: var(--whitebg);
+  }
+
+  .AboutHeroSec .AbtHeroData .abttopHero h2,
+  .AbutheroBtm h2,
+  .OurStorySec .StoryData .storyTexted h2,
+  .AbtTeamSec .AbtTeamdata .AbtTeamHead h2 {
+    font-size: 28px;
+  }
+
+  .AboutHeroSec .AbtHeroData .abttopHero h4 {
+    font-size: 16px;
+  }
+
+  /* --- START: Add this new rule for the card's body text --- */
+  .AbutheroBtm .abtherocard .AbtCardItem .body p {
+    font-size: 13px;
+    line-height: 120%;
+  }
+  /* --- END: New text rule --- */
+
+  .team-members-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-member-card-new {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 238 / 321; /* This is the corrected line */
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  transition: transform 0.3s ease;
+}
 }
