@@ -8,23 +8,31 @@ import Footer from '@/app/Components/Footer/Footer';
 const teamData = [
     {
         id: 1,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team1.png',
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/harshit.png',
     },
     {
         id: 2,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team2.png',
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/anna.png',
     },
     {
         id: 3,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team3.png',
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/ankit.png',
     },
     {
         id: 4,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team4.png',
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/harshvardhan.png',
     },
     {
         id: 5,
-        image: 'https://d2il6osz49gpup.cloudfront.net/Images/team5.png',
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/surbhi.png',
+    },
+    {
+        id: 6,
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/suryansh.png',
+    },
+    {
+        id: 7,
+        image: 'https://d2il6osz49gpup.cloudfront.net/aboutus-page/chrissy.png',
     },
 ];
 
@@ -97,8 +105,8 @@ function AboutUs() {
         <Container>
           <div className="AbtTeamdata">
             <div className="AbtTeamHead">
-              <h2><span>We&apos;re not a Company. We&apos;re a</span> Community.</h2>
-              <h4>That means No Gates, No Egos.</h4>
+              <h2><span>We&apos;re not a company. We&apos;re a</span> community.</h2>
+              <h4>That means no gates, no egos.</h4>
               <div className="para">
                 <h6>Just a group of humans trying to build better tools together, with the help of people like you. </h6>
                 <h6>We’re a family open, diverse, and always growing.</h6>
