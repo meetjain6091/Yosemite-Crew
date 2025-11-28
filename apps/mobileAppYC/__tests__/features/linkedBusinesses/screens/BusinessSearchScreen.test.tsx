@@ -72,7 +72,6 @@ jest.mock('@react-navigation/native', () => {
   return {
     ...jest.requireActual('@react-navigation/native'),
     useFocusEffect: (effect: () => void) => {
-      // Correctly mocked useEffect behavior
       ReactLib.useEffect(effect, []);
     },
     useNavigation: () => ({
