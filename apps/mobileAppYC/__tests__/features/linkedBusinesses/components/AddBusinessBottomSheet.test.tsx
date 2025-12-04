@@ -22,12 +22,13 @@ jest.mock('@/hooks', () => ({
 jest.mock(
   '@/shared/components/common/ConfirmActionBottomSheet/ConfirmActionBottomSheet',
   () => {
-    const React = require('react'); // FIX: Require React inside the mock factory
+    // FIX: Use ReactMock to avoid shadowing top-level React
+    const ReactMock = require('react');
     const {View, Text, TouchableOpacity} = require('react-native');
 
     return {
-      ConfirmActionBottomSheet: React.forwardRef((props: any, ref: any) => {
-        React.useImperativeHandle(ref, () => ({
+      ConfirmActionBottomSheet: ReactMock.forwardRef((props: any, ref: any) => {
+        ReactMock.useImperativeHandle(ref, () => ({
           open: jest.fn(),
           close: jest.fn(),
         }));
