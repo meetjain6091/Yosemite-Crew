@@ -315,7 +315,8 @@ describe('BrowseBusinessesScreen', () => {
     ];
     mockSelectBusinessesByCategory.mockReturnValue(mockData);
 
-    dispatchMock.mockImplementation((action: any) => {
+    // FIX: Renamed unused action to _action
+    dispatchMock.mockImplementation((_action: any) => {
       return {
         unwrap: jest.fn().mockResolvedValue({
           photoUrl: 'new_url',

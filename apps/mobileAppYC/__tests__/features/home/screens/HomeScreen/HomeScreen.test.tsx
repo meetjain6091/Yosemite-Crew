@@ -14,12 +14,14 @@ import {Alert, ToastAndroid, Platform} from 'react-native';
 // Mock navigation hooks to avoid loops and provide stable references
 jest.mock('@react-navigation/native', () => {
   const actual = jest.requireActual('@react-navigation/native');
-  const React = require('react');
+  const ReactLib = require('react');
   return {
     ...actual,
     useNavigation: jest.fn(),
     // Critical Fix: Force useFocusEffect to behave like useEffect([]) to prevent render loops in tests
-    useFocusEffect: jest.fn().mockImplementation(cb => React.useEffect(cb, [])),
+    useFocusEffect: jest
+      .fn()
+      .mockImplementation(cb => ReactLib.useEffect(cb, [])),
   };
 });
 
@@ -91,34 +93,39 @@ jest.mock('@/assets/images', () => ({
 
 // Mock Components
 jest.mock('@/shared/components/common', () => {
-  const {View, Text, TextInput, TouchableOpacity} = require('react-native');
+  const {
+    View: RNView,
+    Text: RNText,
+    TextInput: RNTextInput,
+    TouchableOpacity: RNTouchableOpacity,
+  } = require('react-native');
   return {
     SearchBar: (props: any) => (
-      <View testID="search-bar">
-        <TextInput
+      <RNView testID="search-bar">
+        <RNTextInput
           testID="search-input"
           value={props.value}
           onChangeText={props.onChangeText}
           onSubmitEditing={props.onSubmitEditing}
         />
-        <TouchableOpacity onPress={props.onIconPress} testID="search-icon">
-          <Text>Search</Text>
-        </TouchableOpacity>
-      </View>
+        <RNTouchableOpacity onPress={props.onIconPress} testID="search-icon">
+          <RNText>Search</RNText>
+        </RNTouchableOpacity>
+      </RNView>
     ),
     YearlySpendCard: ({amount, onPressView}: any) => (
-      <TouchableOpacity onPress={onPressView} testID="yearly-spend-card">
-        <Text>Spend: {amount}</Text>
-      </TouchableOpacity>
+      <RNTouchableOpacity onPress={onPressView} testID="yearly-spend-card">
+        <RNText>Spend: {amount}</RNText>
+      </RNTouchableOpacity>
     ),
   };
 });
 
 jest.mock('@/shared/components/common/LiquidGlassCard/LiquidGlassCard', () => {
-  const {View} = require('react-native');
+  const {View: RNView} = require('react-native');
   return {
     LiquidGlassCard: ({children, style}: any) => (
-      <View style={style}>{children}</View>
+      <RNView style={style}>{children}</RNView>
     ),
   };
 });
@@ -126,12 +133,15 @@ jest.mock('@/shared/components/common/LiquidGlassCard/LiquidGlassCard', () => {
 jest.mock(
   '@/shared/components/common/LiquidGlassButton/LiquidGlassButton',
   () => {
-    const {TouchableOpacity, Text} = require('react-native');
+    const {
+      TouchableOpacity: RNTouchableOpacity,
+      Text: RNText,
+    } = require('react-native');
     return {
       LiquidGlassButton: ({title, onPress}: any) => (
-        <TouchableOpacity onPress={onPress} testID={`btn-${title}`}>
-          <Text>{title}</Text>
-        </TouchableOpacity>
+        <RNTouchableOpacity onPress={onPress} testID={`btn-${title}`}>
+          <RNText>{title}</RNText>
+        </RNTouchableOpacity>
       ),
     };
   },
@@ -140,41 +150,50 @@ jest.mock(
 jest.mock(
   '@/shared/components/common/CompanionSelector/CompanionSelector',
   () => {
-    const {TouchableOpacity, Text} = require('react-native');
+    const {
+      TouchableOpacity: RNTouchableOpacity,
+      Text: RNText,
+    } = require('react-native');
     return {
       CompanionSelector: ({onSelect, onAddCompanion}: any) => (
-        <TouchableOpacity onPress={onAddCompanion} testID="companion-selector">
-          <Text onPress={() => onSelect('c2')} testID="select-c2">
+        <RNTouchableOpacity
+          onPress={onAddCompanion}
+          testID="companion-selector">
+          <RNText onPress={() => onSelect('c2')} testID="select-c2">
             Select C2
-          </Text>
-        </TouchableOpacity>
+          </RNText>
+        </RNTouchableOpacity>
       ),
     };
   },
 );
 
 jest.mock('@/shared/components/common/AppointmentCard/AppointmentCard', () => {
-  const {View, Text, TouchableOpacity} = require('react-native');
+  const {
+    View: RNView,
+    Text: RNText,
+    TouchableOpacity: RNTouchableOpacity,
+  } = require('react-native');
   return {
     AppointmentCard: (props: any) => (
-      <View testID="appointment-card">
-        <Text>{props.doctorName}</Text>
-        <TouchableOpacity onPress={props.onPress} testID="apt-press">
-          <Text>Details</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+      <RNView testID="appointment-card">
+        <RNText>{props.doctorName}</RNText>
+        <RNTouchableOpacity onPress={props.onPress} testID="apt-press">
+          <RNText>Details</RNText>
+        </RNTouchableOpacity>
+        <RNTouchableOpacity
           onPress={props.onGetDirections}
           testID="apt-directions">
-          <Text>Directions</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={props.onChat} testID="apt-chat">
-          <Text>Chat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={props.onCheckIn} testID="apt-checkin">
-          <Text>CheckIn</Text>
-        </TouchableOpacity>
+          <RNText>Directions</RNText>
+        </RNTouchableOpacity>
+        <RNTouchableOpacity onPress={props.onChat} testID="apt-chat">
+          <RNText>Chat</RNText>
+        </RNTouchableOpacity>
+        <RNTouchableOpacity onPress={props.onCheckIn} testID="apt-checkin">
+          <RNText>CheckIn</RNText>
+        </RNTouchableOpacity>
         {props.footer}
-      </View>
+      </RNView>
     ),
   };
 });

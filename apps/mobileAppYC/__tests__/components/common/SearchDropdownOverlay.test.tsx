@@ -129,7 +129,7 @@ describe('SearchDropdownOverlay Component', () => {
     const {getAllByText} = render(
       <SearchDropdownOverlay
         {...defaultProps}
-        initials={item => 'XY'} // Explicit initials
+        initials={_item => 'XY'} // FIX: unused item -> _item
       />,
     );
     // Should find 'X' because your code does: charAt(0)

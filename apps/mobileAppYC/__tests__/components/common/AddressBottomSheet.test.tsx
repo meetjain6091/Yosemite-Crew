@@ -65,13 +65,13 @@ jest.mock('@/shared/utils/bottomSheetHelpers', () => ({
 // 4. Mock Child Components
 
 // Mock CustomBottomSheet
-// FIX: Required Button inside the factory to avoid ReferenceError
+// FIX: Renamed require('react') to ReactLib to avoid shadowing top-level React import
 jest.mock('@/shared/components/common/BottomSheet/BottomSheet', () => {
-  const React = require('react');
+  const ReactLib = require('react');
   const {View: RNView, Button: RNButton} = require('react-native'); // Require Button here
 
-  return React.forwardRef((props: any, ref: any) => {
-    React.useImperativeHandle(ref, () => ({
+  return ReactLib.forwardRef((props: any, ref: any) => {
+    ReactLib.useImperativeHandle(ref, () => ({
       open: jest.fn(),
       close: jest.fn(),
     }));

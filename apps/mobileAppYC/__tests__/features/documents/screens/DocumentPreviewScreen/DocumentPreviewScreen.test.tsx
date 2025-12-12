@@ -51,27 +51,31 @@ jest.mock('@/assets/images', () => ({
 // 5. Child Components
 jest.mock('@/shared/components/common/Header/Header', () => ({
   Header: ({title, onBack, onRightPress}: any) => {
-    const {TouchableOpacity, Text, View} = require('react-native');
+    const {
+      TouchableOpacity: RNTouchableOpacity,
+      Text: RNText,
+      View: RNView,
+    } = require('react-native');
     return (
-      <View testID="mock-header">
-        <Text>{title}</Text>
-        <TouchableOpacity onPress={onBack} testID="header-back-btn" />
+      <RNView testID="mock-header">
+        <RNText>{title}</RNText>
+        <RNTouchableOpacity onPress={onBack} testID="header-back-btn" />
         {onRightPress && (
-          <TouchableOpacity onPress={onRightPress} testID="header-right-btn">
-            <Text>Edit</Text>
-          </TouchableOpacity>
+          <RNTouchableOpacity onPress={onRightPress} testID="header-right-btn">
+            <RNText>Edit</RNText>
+          </RNTouchableOpacity>
         )}
-      </View>
+      </RNView>
     );
   },
 }));
 
 jest.mock('@/features/documents/components/DocumentAttachmentViewer', () => {
-  const {View, Text} = require('react-native');
+  const {View: RNView, Text: RNText} = require('react-native');
   const DocumentAttachmentViewer = () => (
-    <View testID="mock-attachment-viewer">
-      <Text>Attachment Viewer</Text>
-    </View>
+    <RNView testID="mock-attachment-viewer">
+      <RNText>Attachment Viewer</RNText>
+    </RNView>
   );
   return {
     __esModule: true,
@@ -88,8 +92,9 @@ jest.mock('@/features/documents/documentSlice', () => ({
 const createTestStore = (preloadedState: any) => {
   return configureStore({
     reducer: {
-      companion: (state = {}, action: any) => state,
-      documents: (state = {}, action: any) => state,
+      // FIX: Argument order corrected to (state, action)
+      companion: (state = {}, _action: any) => state,
+      documents: (state = {}, _action: any) => state,
     } as any,
     preloadedState,
   });

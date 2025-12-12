@@ -1,36 +1,10 @@
 import React from 'react';
-import {Button, Text} from 'react-native';
+import {Text} from 'react-native';
 import {render, renderHook, act} from '@testing-library/react-native';
 import {
   EmergencyProvider,
   useEmergency,
 } from '../../../../src/features/home/context/EmergencyContext';
-
-// Helper component to consume the context for testing
-const TestComponent = () => {
-  const {openEmergencySheet, closeEmergencySheet, setEmergencySheetRef} =
-    useEmergency();
-
-  return (
-    <>
-      <Button title="Open" onPress={openEmergencySheet} />
-      <Button title="Close" onPress={closeEmergencySheet} />
-      <Button
-        title="SetRef"
-        onPress={() => {
-          // Simulate setting a ref
-          const mockRef = {
-            current: {
-              open: jest.fn(),
-              close: jest.fn(),
-            },
-          };
-          setEmergencySheetRef(mockRef as any);
-        }}
-      />
-    </>
-  );
-};
 
 describe('EmergencyContext', () => {
   // --- 1. Error Handling ---

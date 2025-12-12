@@ -50,7 +50,7 @@ jest.mock(
         renderActionContent,
         actionWidth,
         actionOverlap,
-        hideSwipeActions,
+        _hideSwipeActions, // FIX: Renamed unused var with prefix _
       }: any) => (
         <RNView
           testID="swipe-card-wrapper"

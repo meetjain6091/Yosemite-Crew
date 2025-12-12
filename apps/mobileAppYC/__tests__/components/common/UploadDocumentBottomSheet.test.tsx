@@ -16,15 +16,15 @@ const mockSheetClose = jest.fn();
 // This mock is crucial. It uses useImperativeHandle to populate the 'ref'
 // passed from the UploadDocumentBottomSheet (the 'bottomSheetRef' inside the component).
 jest.mock('@/shared/components/common/BottomSheet/BottomSheet', () => {
-  const React = require('react');
+  const ReactLib = require('react'); // FIX: Renamed to avoid shadowing
   const {
     View: RNView,
     TouchableOpacity: RNTouchableOpacity,
     Text: RNText,
   } = require('react-native');
 
-  return React.forwardRef((props: any, ref: any) => {
-    React.useImperativeHandle(ref, () => ({
+  return ReactLib.forwardRef((props: any, ref: any) => {
+    ReactLib.useImperativeHandle(ref, () => ({
       snapToIndex: mockSheetSnapToIndex,
       close: mockSheetClose,
     }));

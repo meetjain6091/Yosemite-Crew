@@ -8,13 +8,13 @@ import {
 jest.mock(
   '../../../src/shared/components/common/GenericSelectBottomSheet/GenericSelectBottomSheet',
   () => {
-    const React = require('react');
+    const ReactLib = require('react');
     const {View: RNView, Button: RNButton} = require('react-native');
 
     return {
-      GenericSelectBottomSheet: React.forwardRef((props: any, ref: any) => {
+      GenericSelectBottomSheet: ReactLib.forwardRef((props: any, ref: any) => {
         // Expose imperative methods to the parent (VisitTypeBottomSheet)
-        React.useImperativeHandle(ref, () => ({
+        ReactLib.useImperativeHandle(ref, () => ({
           open: jest.fn(),
           close: jest.fn(),
         }));

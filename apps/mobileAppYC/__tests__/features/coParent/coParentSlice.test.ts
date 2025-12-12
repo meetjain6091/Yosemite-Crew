@@ -322,7 +322,8 @@ describe('coParentSlice', () => {
       const nextState = reducer(initialState, action);
 
       // Check accessByCompanionId mapping
-      expect(nextState.accessByCompanionId['c1']).toEqual(mockPayload[0]);
+      // FIX: Changed from ['c1'] to .c1 to satisfy dot-notation lint rule
+      expect(nextState.accessByCompanionId.c1).toEqual(mockPayload[0]);
 
       // Check defaultAccess logic (first one without companionId)
       expect(nextState.defaultAccess).toEqual(mockPayload[1]);
@@ -334,29 +335,38 @@ describe('coParentSlice', () => {
     });
 
     it('handles fulfilled with only non-role items (fallback logic)', () => {
-        // Logic: const first = updates.find(u => Boolean(u.role)) ?? updates[0];
-        const mockPayload = [
-            { companionId: 'c2', permissions: 'read' }, // No role property
-        ];
+      // Logic: const first = updates.find(u => Boolean(u.role)) ?? updates[0];
+      const mockPayload = [
+        {companionId: 'c2', permissions: 'read'}, // No role property
+      ];
 
-        const action = { type: fetchParentAccess.fulfilled.type, payload: mockPayload };
-        const nextState = reducer(initialState, action);
+      const action = {
+        type: fetchParentAccess.fulfilled.type,
+        payload: mockPayload,
+      };
+      const nextState = reducer(initialState, action);
 
-        // Should fall back to updates[0]
-        expect(nextState.lastFetchedPermissions).toBe('read');
-        expect(nextState.lastFetchedRole).toBeNull();
+      // Should fall back to updates[0]
+      expect(nextState.lastFetchedPermissions).toBe('read');
+      expect(nextState.lastFetchedRole).toBeNull();
     });
 
     it('does not overwrite defaultAccess if already set', () => {
-        const existingDefault = { companionId: null, role: 'original' };
-        const startState = { ...initialState, defaultAccess: existingDefault as any };
+      const existingDefault = {companionId: null, role: 'original'};
+      const startState = {
+        ...initialState,
+        defaultAccess: existingDefault as any,
+      };
 
-        const newPayload = [{ companionId: null, role: 'new' }]; // Should ideally use ??= to ignore this
+      const newPayload = [{companionId: null, role: 'new'}]; // Should ideally use ??= to ignore this
 
-        const action = { type: fetchParentAccess.fulfilled.type, payload: newPayload };
-        const nextState = reducer(startState, action);
+      const action = {
+        type: fetchParentAccess.fulfilled.type,
+        payload: newPayload,
+      };
+      const nextState = reducer(startState, action);
 
-        expect(nextState.defaultAccess).toEqual(existingDefault);
+      expect(nextState.defaultAccess).toEqual(existingDefault);
     });
 
     it('sets error on rejected', () => {

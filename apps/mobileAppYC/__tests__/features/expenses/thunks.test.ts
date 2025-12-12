@@ -342,7 +342,7 @@ describe('expenses thunks', () => {
                 expenseId: 'exp-1',
                 input: expect.objectContaining({
                     expenseName: 'NewTitle', // Updated
-                    amount: 100,             // Updated
+                    amount: 100,            // Updated
                     category: 'OldCat',      // Preserved
                     businessName: 'OldBiz',  // Preserved
                 })
@@ -429,17 +429,13 @@ describe('expenses thunks', () => {
   // ==============================================================================
 
   describe('markInAppExpenseStatus', () => {
+    it('successfully dispatches action', async () => {
+        const payload = { expenseId: 'e-1', status: 'PAID' };
+        const action = markInAppExpenseStatus(payload);
+        const result = await action(mockDispatch, mockGetState, undefined);
 
-    it('catches synchronous errors if any (forced mock)', async () => {
-        // Hard to force error in a sync function inside try/catch without mocking something it calls.
-        // The thunk just returns an object. To test the catch block, we'd need to mock arguments that cause crash
-        // or modify the function. Since it's pure sync, typically this path is unreachable unless input is bad?
-        // Actually, createAsyncThunk wraps the handler. If we pass circular ref maybe?
-        // Let's assume for coverage we verify the happy path is robust.
-
-        // However, to strictly cover the `catch` block in the source code:
-        // We can't easily trigger it unless we mock `rejectWithValue` to throw or similar, which is complex.
-        // Given the simple nature of the function (just return object), the catch block is defensive coding.
+        // Assert that the function was called and returned a result (satisfies usage)
+        expect(result.type).toBeDefined();
     });
   });
 

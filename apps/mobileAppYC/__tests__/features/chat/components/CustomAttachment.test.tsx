@@ -26,7 +26,7 @@ jest.mock('stream-chat-react-native', () => {
   const {View, Text} = require('react-native');
   return {
     useMessageContext: jest.fn(),
-    Attachment: (props: any) => (
+    Attachment: (_props: any) => (
       <View testID="stream-default-attachment">
         <Text>Default Attachment</Text>
       </View>
@@ -115,9 +115,7 @@ describe('CustomAttachment', () => {
         {type: 'video', asset_url: 'http://video.mp4', title: 'My Video'},
       ]);
 
-      const {getByText} = render(
-        <CustomAttachment />,
-      );
+      const {getByText} = render(<CustomAttachment />);
 
       // Initial State: Paused (Play button visible)
       // Note: We need to find the Touchable that wraps the video.

@@ -149,7 +149,7 @@ const createTestStore = (preloadedState: any) => {
         }
         return state;
       },
-      documents: (state = preloadedState.documents || {}, action: any) => state,
+      documents: (state = preloadedState.documents || {}) => state,
     } as any,
     preloadedState,
   });

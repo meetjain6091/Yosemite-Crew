@@ -11,11 +11,11 @@ import {
 jest.mock(
   '../../../src/shared/components/common/UploadDocumentBottomSheet/UploadDocumentBottomSheet',
   () => {
-    const React = require('react');
+    const ReactLib = require('react');
     const {View: RNView, Button: RNButton} = require('react-native');
     // Mock implementation that exposes the action buttons
-    const UploadDocumentBottomSheet = React.forwardRef(
-      (props: any, ref: any) => (
+    const UploadDocumentBottomSheet = ReactLib.forwardRef(
+      (props: any, _ref: any) => (
         <RNView testID="upload-sheet">
           <RNButton title="Take Photo" onPress={props.onTakePhoto} />
           <RNButton title="Choose Gallery" onPress={props.onChooseGallery} />
@@ -31,15 +31,15 @@ jest.mock(
 jest.mock(
   '../../../src/shared/components/common/DeleteDocumentBottomSheet/DeleteDocumentBottomSheet',
   () => {
-    const React = require('react');
+    const ReactLib = require('react');
     const {
       View: RNView,
       Text: RNText,
       Button: RNButton,
     } = require('react-native');
     // Mock implementation that displays the title to test logic
-    const DeleteDocumentBottomSheet = React.forwardRef(
-      (props: any, ref: any) => (
+    const DeleteDocumentBottomSheet = ReactLib.forwardRef(
+      (props: any, _ref: any) => (
         <RNView testID="delete-sheet">
           <RNText>{props.documentTitle}</RNText>
           <RNButton title="Confirm Delete" onPress={props.onDelete} />

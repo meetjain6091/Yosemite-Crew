@@ -5,7 +5,7 @@ import {
   EmergencyBottomSheetRef,
 } from '../../../../src/features/home/components/EmergencyBottomSheet';
 import {useSelector} from 'react-redux';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 // --- Mocks ---
 

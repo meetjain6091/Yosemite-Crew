@@ -2,7 +2,7 @@ import React from 'react';
 import {render, fireEvent} from '@testing-library/react-native';
 import {EnhancedMessage} from '@/features/chat/components/EnhancedMessage';
 import {useMessageContext} from 'stream-chat-react-native';
-import {Alert, Platform, View, Text, ActionSheetIOS} from 'react-native';
+import {Alert, Platform, ActionSheetIOS} from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Share from 'react-native-share';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -12,12 +12,12 @@ import {Toast} from 'toastify-react-native';
 
 // 1. Mock Stream Chat Context
 jest.mock('stream-chat-react-native', () => {
-  const {View, Text} = require('react-native');
+  const {View: RNView, Text: RNText} = require('react-native');
   return {
     MessageSimple: () => (
-      <View>
-        <Text>MessageSimple</Text>
-      </View>
+      <RNView>
+        <RNText>MessageSimple</RNText>
+      </RNView>
     ),
     useMessageContext: jest.fn(),
   };

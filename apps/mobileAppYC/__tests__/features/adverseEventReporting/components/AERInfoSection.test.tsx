@@ -1,7 +1,6 @@
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react-native';
 import {AERInfoSection} from '../../../../src/features/adverseEventReporting/components/AERInfoSection';
-import {View, Text, TouchableOpacity} from 'react-native';
 
 // --- Mocks ---
 
@@ -34,32 +33,33 @@ jest.mock('../../../../src/assets/images', () => ({
 jest.mock(
   '../../../../src/shared/components/common/LiquidGlassCard/LiquidGlassCard',
   () => {
-    const {View} = require('react-native');
+    const {View: RNView} = require('react-native');
     return {
       LiquidGlassCard: ({children, style}: any) => (
-        <View testID="glass-card" style={style}>
+        <RNView testID="glass-card" style={style}>
           {children}
-        </View>
+        </RNView>
       ),
     };
   },
 );
 
-jest.mock(
-  '../../../../src/shared/components/common/FormRowComponents',
-  () => {
-    const {View, Text, TouchableOpacity} = require('react-native');
-    return {
-      RowButton: ({label, value, onPress}: any) => (
-        <TouchableOpacity testID={`row-${label}`} onPress={onPress}>
-          <Text>{label}</Text>
-          <Text>{value}</Text>
-        </TouchableOpacity>
-      ),
-      Separator: () => <View testID="separator" />,
-    };
-  },
-);
+jest.mock('../../../../src/shared/components/common/FormRowComponents', () => {
+  const {
+    View: RNView,
+    Text: RNText,
+    TouchableOpacity: RNTouchableOpacity,
+  } = require('react-native');
+  return {
+    RowButton: ({label, value, onPress}: any) => (
+      <RNTouchableOpacity testID={`row-${label}`} onPress={onPress}>
+        <RNText>{label}</RNText>
+        <RNText>{value}</RNText>
+      </RNTouchableOpacity>
+    ),
+    Separator: () => <RNView testID="separator" />,
+  };
+});
 
 describe('AERInfoSection', () => {
   const mockRows = [

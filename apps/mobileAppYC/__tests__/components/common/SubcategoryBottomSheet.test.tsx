@@ -16,13 +16,13 @@ jest.mock(
   '../../../src/shared/components/common/GenericSelectBottomSheet/GenericSelectBottomSheet',
   () => {
     // Require React and RN components inside the factory to avoid hoisting issues
-    const React = require('react');
+    const ReactLib = require('react');
     const {View, Text, Button} = require('react-native');
 
     return {
-      GenericSelectBottomSheet: React.forwardRef(
+      GenericSelectBottomSheet: ReactLib.forwardRef(
         ({title, items, onSave, selectedItem, emptyMessage}: any, ref: any) => {
-          React.useImperativeHandle(ref, () => ({
+          ReactLib.useImperativeHandle(ref, () => ({
             open: mockOpen,
             close: mockClose,
           }));

@@ -51,18 +51,18 @@ jest.mock('@/shared/utils/attachmentStyles', () =>
 
 // Mock WebView
 jest.mock('react-native-webview', () => {
-  const React = require('react');
+  const ReactLib = require('react'); // FIX: Renamed to avoid shadowing
   const {View} = require('react-native');
   return {
     WebView: (props: any) => {
-      return React.createElement(View, {...props, testID: 'MockWebView'});
+      return ReactLib.createElement(View, {...props, testID: 'MockWebView'});
     },
   };
 });
 
 // Mock Pdf
 jest.mock('react-native-pdf', () => {
-  const React = require('react');
+  const ReactLib = require('react'); // FIX: Renamed to avoid shadowing
   const {View} = require('react-native');
   return {
     __esModule: true,
@@ -70,7 +70,7 @@ jest.mock('react-native-pdf', () => {
       if (props.renderActivityIndicator) {
         props.renderActivityIndicator();
       }
-      return React.createElement(View, {...props, testID: 'MockPdf'});
+      return ReactLib.createElement(View, {...props, testID: 'MockPdf'});
     },
   };
 });

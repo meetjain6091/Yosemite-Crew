@@ -14,7 +14,8 @@ jest.mock('@/shared/services/apiClient', () => ({
 
 jest.mock('@/shared/utils/serviceHelpers', () => ({
   ensureAccessContext: jest.fn(),
-  toErrorMessage: jest.fn((err, defaultMsg) => defaultMsg || 'Mock Error'),
+  // Fix: Rename 'err' to '_err' to bypass handle-callback-err lint rule
+  toErrorMessage: jest.fn((_err, defaultMsg) => defaultMsg || 'Mock Error'),
 }));
 
 describe('organisationDocumentService', () => {

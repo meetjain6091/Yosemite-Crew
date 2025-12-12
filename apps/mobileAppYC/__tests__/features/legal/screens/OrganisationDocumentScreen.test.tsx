@@ -37,7 +37,6 @@ jest.mock('../../../../src/hooks', () => ({
 }));
 
 // 2. Mock Navigation
-const mockNavigate = jest.fn();
 const mockGoBack = jest.fn();
 const mockRoute = {
   params: {

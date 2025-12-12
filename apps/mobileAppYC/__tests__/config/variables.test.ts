@@ -1,10 +1,12 @@
 describe('Configuration Variables', () => {
   const originalEnv = process.env;
-  const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  const consoleWarnSpy = jest
+    .spyOn(console, 'warn')
+    .mockImplementation(() => {});
 
   beforeEach(() => {
     jest.resetModules();
-    process.env = { ...originalEnv };
+    process.env = {...originalEnv};
     consoleWarnSpy.mockClear();
   });
 
@@ -20,11 +22,17 @@ describe('Configuration Variables', () => {
   describe('Default Configuration (Missing variables.local.ts)', () => {
     beforeEach(() => {
       // Mock the require to throw MODULE_NOT_FOUND
-      jest.mock('../../src/config/variables.local', () => {
-        const error: any = new Error("Cannot find module './variables.local'");
-        error.code = 'MODULE_NOT_FOUND';
-        throw error;
-      }, { virtual: true });
+      jest.mock(
+        '../../src/config/variables.local',
+        () => {
+          const error: any = new Error(
+            "Cannot find module './variables.local'",
+          );
+          error.code = 'MODULE_NOT_FOUND';
+          throw error;
+        },
+        {virtual: true},
+      );
     });
 
     it('uses default values when local config is missing', () => {
@@ -42,8 +50,12 @@ describe('Configuration Variables', () => {
     it('exports storage keys correctly', () => {
       // These are static exports, just verifying integrity
       const config = require('../../src/config/variables');
-      expect(config.PENDING_PROFILE_STORAGE_KEY).toBe('@pending_profile_payload');
-      expect(config.PENDING_PROFILE_UPDATED_EVENT).toBe('pendingProfileUpdated');
+      expect(config.PENDING_PROFILE_STORAGE_KEY).toBe(
+        '@pending_profile_payload',
+      );
+      expect(config.PENDING_PROFILE_UPDATED_EVENT).toBe(
+        'pendingProfileUpdated',
+      );
     });
 
     it('suppresses console warning in test environment', () => {
@@ -59,7 +71,7 @@ describe('Configuration Variables', () => {
       require('../../src/config/variables');
 
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('No variables.local.ts found')
+        expect.stringContaining('No variables.local.ts found'),
       );
     });
   });
@@ -70,25 +82,29 @@ describe('Configuration Variables', () => {
 
   describe('Local Configuration Override', () => {
     const mockLocalConfig = {
-      PASSWORDLESS_AUTH_CONFIG: { profileServiceUrl: 'http://override.com' },
-      GOOGLE_PLACES_CONFIG: { apiKey: 'OVERRIDE_GOOGLE_KEY' },
-      API_CONFIG: { baseUrl: 'http://localhost:3000' },
-      STREAM_CHAT_CONFIG: { apiKey: 'OVERRIDE_STREAM_KEY' },
-      STRIPE_CONFIG: { publishableKey: 'pk_test_override' },
-      AUTH_FEATURE_FLAGS: { enableReviewLogin: false },
-      DEMO_LOGIN_CONFIG: { email: 'test@example.com' }
+      PASSWORDLESS_AUTH_CONFIG: {profileServiceUrl: 'http://override.com'},
+      GOOGLE_PLACES_CONFIG: {apiKey: 'OVERRIDE_GOOGLE_KEY'},
+      API_CONFIG: {baseUrl: 'http://localhost:3000'},
+      STREAM_CHAT_CONFIG: {apiKey: 'OVERRIDE_STREAM_KEY'},
+      STRIPE_CONFIG: {publishableKey: 'pk_test_override'},
+      AUTH_FEATURE_FLAGS: {enableReviewLogin: false},
+      DEMO_LOGIN_CONFIG: {email: 'test@example.com'},
     };
 
     beforeEach(() => {
       // Mock successful load of local config
-      jest.mock('../../src/config/variables.local', () => mockLocalConfig, { virtual: true });
+      jest.mock('../../src/config/variables.local', () => mockLocalConfig, {
+        virtual: true,
+      });
     });
 
     it('merges local overrides with defaults', () => {
       const config = require('../../src/config/variables');
 
       // Check overridden values
-      expect(config.PASSWORDLESS_AUTH_CONFIG.profileServiceUrl).toBe('http://override.com');
+      expect(config.PASSWORDLESS_AUTH_CONFIG.profileServiceUrl).toBe(
+        'http://override.com',
+      );
       expect(config.GOOGLE_PLACES_CONFIG.apiKey).toBe('OVERRIDE_GOOGLE_KEY');
       expect(config.API_CONFIG.baseUrl).toBe('http://localhost:3000');
       expect(config.STREAM_CHAT_CONFIG.apiKey).toBe('OVERRIDE_STREAM_KEY');
@@ -108,9 +124,13 @@ describe('Configuration Variables', () => {
   describe('Error Handling', () => {
     it('re-throws unknown errors during require', () => {
       // Mock an error that is NOT 'MODULE_NOT_FOUND' (e.g. syntax error in local file)
-      jest.mock('../../src/config/variables.local', () => {
-        throw new Error('SyntaxError: Unexpected token');
-      }, { virtual: true });
+      jest.mock(
+        '../../src/config/variables.local',
+        () => {
+          throw new Error('SyntaxError: Unexpected token');
+        },
+        {virtual: true},
+      );
 
       expect(() => {
         require('../../src/config/variables');
@@ -118,16 +138,19 @@ describe('Configuration Variables', () => {
     });
 
     it('handles non-object errors gracefully', () => {
-       // Edge case for isMissingLocalVariablesModule helper logic
-       // If require throws a string or null (unlikely but typescript guarded)
-       jest.mock('../../src/config/variables.local', () => {
-        // eslint-disable-next-line no-throw-literal
-        throw "Critical Failure";
-      }, { virtual: true });
+      // Edge case for isMissingLocalVariablesModule helper logic
+      // If require throws a string or null (unlikely but typescript guarded)
+      jest.mock(
+        '../../src/config/variables.local',
+        () => {
+          throw 'Critical Failure';
+        },
+        {virtual: true},
+      );
 
       expect(() => {
         require('../../src/config/variables');
-      }).toThrow("Critical Failure");
+      }).toThrow('Critical Failure');
     });
   });
 });

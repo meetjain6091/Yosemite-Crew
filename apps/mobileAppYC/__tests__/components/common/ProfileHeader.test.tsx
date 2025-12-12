@@ -41,9 +41,9 @@ jest.mock(
   '../../../src/shared/components/common/ProfileImagePicker/ProfileImagePicker',
   () => {
     const {View: RNView} = require('react-native');
-    const React = require('react');
+    const ReactLib = require('react');
     return {
-      ProfileImagePicker: React.forwardRef((props: any, ref: any) => {
+      ProfileImagePicker: ReactLib.forwardRef((props: any, _ref: any) => {
         // We don't necessarily need to modify ref here because
         // we control the ref object passed into ProfileHeader from the test.
         // But React warns if functional components get refs without forwardRef.

@@ -3,7 +3,6 @@ import {render, fireEvent} from '@testing-library/react-native';
 import {DocumentsScreen} from '../../../../../src/features/documents/screens/DocumentsScreen/DocumentsScreen';
 import * as reactRedux from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {View, Text, TouchableOpacity} from 'react-native';
 import {DOCUMENT_CATEGORIES} from '../../../../../src/features/documents/constants';
 
 // --- Mocks ---
@@ -23,20 +22,24 @@ jest.mock('../../../../../src/hooks', () => ({
 }));
 
 jest.mock('../../../../../src/shared/components/common', () => {
-  const {View} = require('react-native');
+  const {View: RNView} = require('react-native');
   return {
-    SafeArea: ({children}: any) => <View>{children}</View>,
+    SafeArea: ({children}: any) => <RNView>{children}</RNView>,
   };
 });
 
 jest.mock('../../../../../src/shared/components/common/Header/Header', () => {
-  const {View, Text, TouchableOpacity} = require('react-native');
+  const {
+    View: RNView,
+    Text: RNText,
+    TouchableOpacity: RNTouchableOpacity,
+  } = require('react-native');
   return {
     Header: ({title, onRightPress}: any) => (
-      <View testID="header">
-        <Text>{title}</Text>
-        <TouchableOpacity onPress={onRightPress} testID="header-right-btn" />
-      </View>
+      <RNView testID="header">
+        <RNText>{title}</RNText>
+        <RNTouchableOpacity onPress={onRightPress} testID="header-right-btn" />
+      </RNView>
     ),
   };
 });
@@ -44,12 +47,15 @@ jest.mock('../../../../../src/shared/components/common/Header/Header', () => {
 jest.mock(
   '../../../../../src/shared/components/common/SearchBar/SearchBar',
   () => {
-    const {Text, TouchableOpacity} = require('react-native');
+    const {
+      Text: RNText,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
     return {
       SearchBar: ({onPress}: any) => (
-        <TouchableOpacity onPress={onPress} testID="searchBar">
-          <Text>Search</Text>
-        </TouchableOpacity>
+        <RNTouchableOpacity onPress={onPress} testID="searchBar">
+          <RNText>Search</RNText>
+        </RNTouchableOpacity>
       ),
     };
   },
@@ -58,15 +64,18 @@ jest.mock(
 jest.mock(
   '../../../../../src/shared/components/common/CompanionSelector/CompanionSelector',
   () => {
-    const {View, TouchableOpacity} = require('react-native');
+    const {
+      View: RNView,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
     return {
       CompanionSelector: ({onSelect}: any) => (
-        <View testID="companionSelector">
-          <TouchableOpacity
+        <RNView testID="companionSelector">
+          <RNTouchableOpacity
             onPress={() => onSelect('c2')}
             testID="companion-select-btn"
           />
-        </View>
+        </RNView>
       ),
     };
   },
@@ -76,21 +85,24 @@ jest.mock(
 jest.mock(
   '../../../../../src/features/documents/components/DocumentListItem',
   () => {
-    const {View, TouchableOpacity} = require('react-native');
+    const {
+      View: RNView,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
     return {
       __esModule: true,
       default: ({onPressView, onPressEdit, document}: any) => (
-        <View testID="docItem">
+        <RNView testID="docItem">
           {/* Pass document.id if available, fallback to 'doc1' for tests not providing full doc object */}
-          <TouchableOpacity
+          <RNTouchableOpacity
             onPress={() => onPressView(document?.id || 'doc1')}
             testID="doc-view-btn"
           />
-          <TouchableOpacity
+          <RNTouchableOpacity
             onPress={() => onPressEdit(document?.id || 'doc1')}
             testID="doc-edit-btn"
           />
-        </View>
+        </RNView>
       ),
     };
   },
@@ -99,12 +111,15 @@ jest.mock(
 jest.mock(
   '../../../../../src/shared/components/common/CategoryTile/CategoryTile',
   () => {
-    const {Text, TouchableOpacity} = require('react-native');
+    const {
+      Text: RNText,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
     return {
       CategoryTile: ({onPress, title}: any) => (
-        <TouchableOpacity onPress={onPress} testID={`cat-${title}`}>
-          <Text>{title}</Text>
-        </TouchableOpacity>
+        <RNTouchableOpacity onPress={onPress} testID={`cat-${title}`}>
+          <RNText>{title}</RNText>
+        </RNTouchableOpacity>
       ),
     };
   },
@@ -113,12 +128,12 @@ jest.mock(
 jest.mock(
   '../../../../../src/features/documents/screens/EmptyDocumentsScreen/EmptyDocumentsScreen',
   () => {
-    const {View, Text} = require('react-native');
+    const {View: RNView, Text: RNText} = require('react-native');
     return {
       EmptyDocumentsScreen: () => (
-        <View testID="emptyScreen">
-          <Text>Empty</Text>
-        </View>
+        <RNView testID="emptyScreen">
+          <RNText>Empty</RNText>
+        </RNView>
       ),
     };
   },

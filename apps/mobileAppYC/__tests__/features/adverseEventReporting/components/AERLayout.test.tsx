@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {Text} from 'react-native';
 import {render, fireEvent} from '@testing-library/react-native';
 import AERLayout from '../../../../src/features/adverseEventReporting/components/AERLayout';
 
@@ -23,25 +23,31 @@ jest.mock('@/hooks', () => ({
 // 2. Mock Shared Components
 // FIX: We require 'react-native' INSIDE the factory to avoid ReferenceError
 jest.mock('@/shared/components/common', () => {
-  const {View} = require('react-native');
+  const {View: RNView} = require('react-native');
   return {
-    SafeArea: ({children}: any) => <View testID="safe-area">{children}</View>,
+    SafeArea: ({children}: any) => (
+      <RNView testID="safe-area">{children}</RNView>
+    ),
   };
 });
 
 jest.mock('@/shared/components/common/Header/Header', () => {
-  const {View, Text, TouchableOpacity} = require('react-native');
+  const {
+    View: RNView,
+    Text: RNText,
+    TouchableOpacity: RNTouchableOpacity,
+  } = require('react-native');
   return {
     Header: ({title, showBackButton, onBack}: any) => (
-      <View testID="mock-header">
-        <Text>{title}</Text>
-        <Text>{showBackButton ? 'BackVisible' : 'BackHidden'}</Text>
+      <RNView testID="mock-header">
+        <RNText>{title}</RNText>
+        <RNText>{showBackButton ? 'BackVisible' : 'BackHidden'}</RNText>
         {onBack && (
-          <TouchableOpacity onPress={onBack} testID="header-back-btn">
-            <Text>Back</Text>
-          </TouchableOpacity>
+          <RNTouchableOpacity onPress={onBack} testID="header-back-btn">
+            <RNText>Back</RNText>
+          </RNTouchableOpacity>
         )}
-      </View>
+      </RNView>
     ),
   };
 });
@@ -49,18 +55,21 @@ jest.mock('@/shared/components/common/Header/Header', () => {
 jest.mock(
   '@/shared/components/common/PrimaryActionButton/PrimaryActionButton',
   () => {
-    const {Text, TouchableOpacity} = require('react-native');
+    const {
+      Text: RNText,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
     return {
       __esModule: true,
       default: ({title, onPress, disabled, textStyle}: any) => (
-        <TouchableOpacity
+        <RNTouchableOpacity
           testID="bottom-action-button"
           onPress={onPress}
           disabled={disabled}>
-          <Text>{title}</Text>
-          {disabled && <Text>Disabled</Text>}
-          {textStyle && <Text>CustomStyle</Text>}
-        </TouchableOpacity>
+          <RNText>{title}</RNText>
+          {disabled && <RNText>Disabled</RNText>}
+          {textStyle && <RNText>CustomStyle</RNText>}
+        </RNTouchableOpacity>
       ),
     };
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 import {render} from '@testing-library/react-native';
 import {UserProfileHeader} from '../../../../src/features/account/components/UserProfileHeader';
 
@@ -9,21 +8,21 @@ import {UserProfileHeader} from '../../../../src/features/account/components/Use
 jest.mock(
   '../../../../src/shared/components/common/ProfileHeader/ProfileHeader',
   () => {
-    const {View, Text} = require('react-native');
+    const {View: RNView, Text: RNText} = require('react-native');
 
     return {
       ProfileHeader: (props: any) => (
-        <View testID="mock-profile-header">
-          <Text testID="header-title">{props.title}</Text>
-          <Text testID="header-fallback">{props.fallbackInitial}</Text>
-          <Text testID="header-props">
+        <RNView testID="mock-profile-header">
+          <RNText testID="header-title">{props.title}</RNText>
+          <RNText testID="header-fallback">{props.fallbackInitial}</RNText>
+          <RNText testID="header-props">
             {JSON.stringify({
               size: props.size,
               showCameraButton: props.showCameraButton,
               profileImage: props.profileImage,
             })}
-          </Text>
-        </View>
+          </RNText>
+        </RNView>
       ),
     };
   },

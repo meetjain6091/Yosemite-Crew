@@ -3,7 +3,6 @@ import {render, fireEvent, act} from '@testing-library/react-native';
 import DeleteAccountBottomSheet, {
   DeleteAccountBottomSheetRef,
 } from '../../../../src/features/account/components/DeleteAccountBottomSheet';
-import {Text, TouchableOpacity, View} from 'react-native';
 
 // --- Mocks ---
 
@@ -11,38 +10,42 @@ import {Text, TouchableOpacity, View} from 'react-native';
 jest.mock(
   '../../../../src/shared/components/common/ConfirmActionBottomSheet/ConfirmActionBottomSheet',
   () => {
-    const React = require('react');
-    const {View, Text, TouchableOpacity} = require('react-native');
+    const ReactLib = require('react');
+    const {
+      View: RNView,
+      Text: RNText,
+      TouchableOpacity: RNTouchableOpacity,
+    } = require('react-native');
 
-    return React.forwardRef((props: any, ref: any) => {
-      React.useImperativeHandle(ref, () => ({
+    return ReactLib.forwardRef((props: any, ref: any) => {
+      ReactLib.useImperativeHandle(ref, () => ({
         open: jest.fn(),
         close: jest.fn(),
       }));
 
       return (
-        <View testID="mock-confirm-sheet">
-          <Text>{props.title}</Text>
-          <Text>{props.message}</Text>
+        <RNView testID="mock-confirm-sheet">
+          <RNText>{props.title}</RNText>
+          <RNText>{props.message}</RNText>
           {props.children}
 
           {props.primaryButton && (
-            <TouchableOpacity
+            <RNTouchableOpacity
               testID="sheet-primary-button"
               onPress={props.primaryButton.onPress}
               disabled={props.primaryButton.disabled}>
-              <Text>{props.primaryButton.label}</Text>
-            </TouchableOpacity>
+              <RNText>{props.primaryButton.label}</RNText>
+            </RNTouchableOpacity>
           )}
 
           {props.secondaryButton && (
-            <TouchableOpacity
+            <RNTouchableOpacity
               testID="sheet-secondary-button"
               onPress={props.secondaryButton.onPress}>
-              <Text>{props.secondaryButton.label}</Text>
-            </TouchableOpacity>
+              <RNText>{props.secondaryButton.label}</RNText>
+            </RNTouchableOpacity>
           )}
-        </View>
+        </RNView>
       );
     });
   },
@@ -50,13 +53,13 @@ jest.mock(
 
 // 2. Mock Input
 jest.mock('../../../../src/shared/components/common/Input/Input', () => {
-  const {View, Text} = require('react-native');
+  const {View: RNView, Text: RNText} = require('react-native');
 
   return {
     Input: (props: any) => (
-      <View testID="mock-input-container">
-        <Text testID="input-error">{props.error}</Text>
-      </View>
+      <RNView testID="mock-input-container">
+        <RNText testID="input-error">{props.error}</RNText>
+      </RNView>
     ),
   };
 });
@@ -230,7 +233,7 @@ describe('DeleteAccountBottomSheet', () => {
 
   it('shows error if valid email matches but onDelete fails (Error object)', async () => {
     mockOnDelete.mockRejectedValue(new Error('Network fail'));
-    const {getByTestId, findByText, UNSAFE_getByType} = render(
+    const {findByText, UNSAFE_getByType, getByTestId} = render(
       <DeleteAccountBottomSheet
         email="user@test.com"
         onDelete={mockOnDelete}
@@ -249,7 +252,7 @@ describe('DeleteAccountBottomSheet', () => {
 
   it('shows generic error if onDelete fails with string', async () => {
     mockOnDelete.mockRejectedValue('String error');
-    const {getByTestId, findByText, UNSAFE_getByType} = render(
+    const {findByText, UNSAFE_getByType, getByTestId} = render(
       <DeleteAccountBottomSheet
         email="user@test.com"
         onDelete={mockOnDelete}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react-native';
 import IconInfoTile from '../../../src/shared/components/common/tiles/IconInfoTile';
-import {Image, Text, View} from 'react-native';
+import {Image, Text} from 'react-native';
 
 // --- Mocks ---
 
@@ -51,10 +51,10 @@ jest.mock('@/shared/utils/cardStyles', () => ({
 
 // Mock LiquidGlassCard
 jest.mock('@/shared/components/common/LiquidGlassCard/LiquidGlassCard', () => {
-  const {View} = require('react-native');
+  const {View: RNView} = require('react-native');
   return {
     LiquidGlassCard: (props: any) => (
-      <View testID="liquid-glass-card">{props.children}</View>
+      <RNView testID="liquid-glass-card">{props.children}</RNView>
     ),
   };
 });

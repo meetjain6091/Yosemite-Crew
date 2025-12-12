@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  TextInput,
-  Image,
-} from 'react-native';
+import {TextInput, Image} from 'react-native';
 import {render, fireEvent, act} from '@testing-library/react-native';
 import {
   DosageBottomSheet,
@@ -30,7 +27,7 @@ jest.mock('@/assets/images', () => ({
 jest.mock(
   '@/shared/components/common/ConfirmActionBottomSheet/ConfirmActionBottomSheet',
   () => {
-    const React = require('react');
+    const ReactLib = require('react');
     const {
       View: MockView,
       TouchableOpacity: MockTouchableOpacity,
@@ -38,8 +35,8 @@ jest.mock(
     } = require('react-native');
 
     return {
-      ConfirmActionBottomSheet: React.forwardRef((props: any, ref: any) => {
-        React.useImperativeHandle(ref, () => ({
+      ConfirmActionBottomSheet: ReactLib.forwardRef((props: any, ref: any) => {
+        ReactLib.useImperativeHandle(ref, () => ({
           open: jest.fn(),
           close: jest.fn(),
         }));
